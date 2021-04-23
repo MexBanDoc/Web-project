@@ -13,6 +13,7 @@ export class Game {
   }
 
   start() {
+    // TODO: Созлать класс блока, добавить в gameObjects
     this.ball = new Ball(this);
     this.board = new Board(this);
 

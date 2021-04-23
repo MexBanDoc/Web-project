@@ -22,6 +22,8 @@ export class Ball {
     this.position.x += this.speed.x;
     this.position.y += this.speed.y;
 
+    // TODO: Вынести в отдельный метод
+    // TODO: Проверять столкновение со "всеми" объектами игры (с доской)
     if (this.position.x + this.size > this.game.width || this.position.x < 0) {
       this.speed.x = -this.speed.x;
     }

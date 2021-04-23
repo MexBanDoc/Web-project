@@ -18,6 +18,8 @@ export class KeyboardHandler {
       }
     });
 
+    // FIXME: Доска останавливается, если быстро нажать в обе стороны
+    // TODO: Вместо полного обнуления, отменять скоростьв нужном направлении
     document.addEventListener("keyup", (event) => {
       switch (event.key) {
         case "w":

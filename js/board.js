@@ -49,6 +49,7 @@ export class Board {
     );
   }
 
+  // TODO: Добавить обработку столкновений с полом и потолком
   update(dt) {
     this.position.x += this.speed;
     this.position.y += this.ySpeed;
