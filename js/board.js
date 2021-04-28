@@ -1,7 +1,7 @@
 export class Board {
   constructor(game) {
     this.game = game;
-    this.image = game.boardImage;
+    this.image = game.images['board'];
     this.width = 150;
     this.height = 20;
 
@@ -61,5 +61,9 @@ export class Board {
     if (this.position.x + this.width > this.game.width) {
       this.position.x = this.game.width - this.width;
     }
+  }
+
+  hit() {
+    
   }
 }
