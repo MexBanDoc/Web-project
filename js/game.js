@@ -4,9 +4,12 @@ import { KeyboardHandler } from "./keyboardHandler.js";
 import { Brick } from "./brick.js";
 
 export class Game {
-  constructor(width, height) {
-    this.width = width;
-    this.height = height;
+  constructor(settingManager, levelManager) {
+    this.settingManager = settingManager;
+    this.levelManager = levelManager;
+
+    this.width = settingManager.gameWidth;
+    this.height = settingManager.gameHeight;
 
     this.imagesSrcPath = "../assets/images/";
     var imagesToLoad = ["background.png", "ball.png", "board.png", "brick.png"];
@@ -17,25 +20,27 @@ export class Game {
       img.src = path;
       this.images[imgName.split(".")[0]] = img;
     }
+
+    this.currentLevel;
+    this.state = "Idle"; // "Idle" "Playing" "Paused" "Complete" "Failed"
+  }
+
+  setLevelByName(name) {
+    this.currentLevel = name;
   }
 
   start() {
+    this.state = "Playing";
     // TODO: Созлать класс блока, добавить в gameObjects
     this.ball = new Ball(
       this,
-      { x: this.width / 2, y: this.height / 2 },
-      { x: 2, y: -2 }
+      { x: this.width / 2, y: (this.height / 4) * 3 },
+      { x: this.settingManager.ballSpeed, y: -this.settingManager.ballSpeed }
     );
+
     this.board = new Board(this);
 
-    let bricks = [];
-    for (let i = 0; i < 10; i++) {
-      bricks.push(new Brick(this, { x: i * 100, y: 10 }));
-    }
-
-    for (let i = 0; i < 10; i++) {
-      bricks.push(new Brick(this, { x: i * 100, y: 50 }));
-    }
+    let bricks = this.levelManager.convertToBricks(this, this.currentLevel);
 
     this.gameObjects = [this.ball, this.board, ...bricks];
 
@@ -43,7 +48,18 @@ export class Game {
   }
 
   update(dt) {
-    this.gameObjects.forEach((obj) => obj.update(dt));
+    let brickCount = 0;
+    for (let obj of this.gameObjects) {
+      if (obj instanceof Brick) {
+        brickCount++;
+      }
+
+      obj.update(dt);
+    }
+
+    if (brickCount == 0) {
+      this.state = "Complete";
+    }
   }
 
   draw(context) {
