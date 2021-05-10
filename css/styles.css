@@ -1,3 +1,70 @@
 #screen {
   border: 5px solid purple;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body {
+  background: rgb(63,94,251);
+  background: linear-gradient(146deg, rgba(63,94,251,1) 0%, rgba(255,11,61,1) 100%);
+}
+
+body > .hide {
+  display: none;
+}
+
+.menu {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #f2b7fd;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+
+
+  background: rgb(63,94,251);
+  background: linear-gradient(146deg, rgba(63,94,251,1) 0%, rgba(255,11,61,1) 100%);
+}
+
+.menu > button {
+  border: none;
+  background: #fefefe;
+  color: #9e6bc7;
+  padding: 15px 32px;
+  margin: 5px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 32px;
+}
+
+.menu > button:hover {
+  background: #9e6bc7;
+  color: #fefefe;
+}
+
+.menu > button:active {
+  background: #cf03f8;
+  color: #fefefe;
+}
+
+
+#win > h2 {
+  padding: 20px;
+  background: #a4e697;
+  color: #a102a1;
+}
+
+#fail > h2 {
+  padding: 20px;
+  background: #f38686;
+  color: #a102a1;
 }
