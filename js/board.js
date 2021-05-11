@@ -5,7 +5,7 @@ export class Board {
     this.width = game.settingManager.boardWidth;
     this.height = game.settingManager.boardHeight;
 
-    this.maxSpeed = 10;
+    this.maxSpeed = 5;
     this.speed = 0;
     this.ySpeed = 0;
 
@@ -13,6 +13,8 @@ export class Board {
       x: game.width / 2 - this.width / 2,
       y: game.height - this.height - 10,
     };
+
+    this.bonus = null;
   }
 
   moveLeft() {
@@ -37,6 +39,19 @@ export class Board {
 
   stopY() {
     this.ySpeed = 0;
+  }
+
+  // FIXME: Out of order
+  useBonus() {
+    if (this.bonus) {
+      this.bonus.activate(this.game);
+    }
+  }
+
+  stopBonus() {
+    if (this.bonus) {
+      this.bonus.deactivate(this.game);
+    }
   }
 
   draw(context) {

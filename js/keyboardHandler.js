@@ -29,6 +29,9 @@ export class KeyboardHandler {
       case "d":
         this.board.moveRight();
         break;
+      case " ":
+        this.board.useBonus();
+        break;
     }
   }
 
@@ -39,8 +42,17 @@ export class KeyboardHandler {
         this.board.stopY();
         break;
       case "a":
+        if (this.board.speed < 0) {
+          this.board.stop();
+        }
+        break;
       case "d":
-        this.board.stop();
+        if (this.board.speed > 0) {
+          this.board.stop();
+        }
+        break;
+      case " ":
+        this.board.stopBonus();
         break;
     }
   }

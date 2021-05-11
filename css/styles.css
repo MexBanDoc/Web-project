@@ -7,8 +7,12 @@
 }
 
 body {
-  background: rgb(63,94,251);
-  background: linear-gradient(146deg, rgba(63,94,251,1) 0%, rgba(255,11,61,1) 100%);
+  background: rgb(63, 94, 251);
+  background: linear-gradient(
+    146deg,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(255, 11, 61, 1) 100%
+  );
 }
 
 body > .hide {
@@ -29,9 +33,12 @@ body > .hide {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 32px;
 
-
-  background: rgb(63,94,251);
-  background: linear-gradient(146deg, rgba(63,94,251,1) 0%, rgba(255,11,61,1) 100%);
+  background: rgb(63, 94, 251);
+  background: linear-gradient(
+    146deg,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(255, 11, 61, 1) 100%
+  );
 }
 
 .menu > button {
@@ -39,11 +46,12 @@ body > .hide {
   background: #fefefe;
   color: #9e6bc7;
   padding: 15px 32px;
-  margin: 5px 32px;
+  margin: 5px auto;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 32px;
+  width: 500px;
 }
 
 .menu > button:hover {
@@ -55,7 +63,6 @@ body > .hide {
   background: #cf03f8;
   color: #fefefe;
 }
-
 
 #win > h2 {
   padding: 20px;

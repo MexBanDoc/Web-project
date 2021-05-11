@@ -9,7 +9,7 @@
   </head>
   <body>
     <canvas id="screen" width="800" height="600" class="hide"></canvas>
-    
+
     <div id="mainMenu" class="menu">
       <h2>Arkanoid</h2>
 
@@ -23,6 +23,8 @@
       <button class="level">Level 1</button>
       <button class="level">Level 2</button>
       <button class="level">Level 3</button>
+      <button class="level">Level 4</button>
+      <button class="level">Level 5</button>
       <button class="back">Back</button>
     </div>
 
@@ -30,11 +32,15 @@
       <h2>Options</h2>
 
       <label>Ball Speed
-        <input type="number" value="3" id="ballSpeedInput">
+        <input type="number" value="5" id="ballSpeedInput" />
       </label>
 
       <label>Board Size
-        <input type="number" value="200" id="ballSpeedInput">
+        <input type="number" value="200" id="boardSizeInput" />
+      </label>
+
+      <label>Bonus Chance
+        <input type="number" value="0.9" id="bonusChanceInput" />
       </label>
 
       <button class="back">Back</button>
