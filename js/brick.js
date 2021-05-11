@@ -1,3 +1,5 @@
+import { generateBonus } from "./bonus.js";
+
 export class Brick {
   constructor(game, position = { x: 0, y: 0 }) {
     this.game = game;
@@ -24,6 +26,10 @@ export class Brick {
     var index = this.game.gameObjects.indexOf(this);
     if (index !== -1) {
       this.game.gameObjects.splice(index, 1);
+      let chance = Math.random() < this.game.settingManager.bonusChance;
+      if (chance) {
+        generateBonus(this.game, this.position);
+      }
     }
   }
 }

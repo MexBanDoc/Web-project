@@ -12,7 +12,16 @@ export class Game {
     this.height = settingManager.gameHeight;
 
     this.imagesSrcPath = "../assets/images/";
-    var imagesToLoad = ["background.png", "ball.png", "board.png", "brick.png"];
+    var imagesToLoad = [
+      "background.png",
+      "ball.png",
+      "board.png",
+      "brick.png",
+      "bonus-confuse.png",
+      "bonus-shrink.png",
+      "bonus-explode.png",
+      "bonus-jolt.png",
+    ];
     this.images = {};
     for (let imgName of imagesToLoad) {
       let path = this.imagesSrcPath + imgName;
@@ -31,6 +40,7 @@ export class Game {
 
   start() {
     this.state = "Playing";
+    this.settingManager.update();
     // TODO: Созлать класс блока, добавить в gameObjects
     this.ball = new Ball(
       this,

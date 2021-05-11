@@ -141,4 +141,3 @@ function returnFail(value) {
   fail.classList.add("hide");
   mainMenu.classList.remove("hide");
 }
-
