@@ -1,34 +1,40 @@
+import { Brick } from "./brick.js";
+import { Bullet } from "./bullet.js";
+
 let bonusMap = {
   confuse: {
     do(game) {
       confuse(game);
-    },
-    undo(game) {
-      unconfuse(game);
     },
   },
   shrink: {
     do(game) {
       shrink(game);
     },
-    undo(game) {
-      unshrink(game);
-    },
   },
   explode: {
     do(game) {
       explode(game);
-    },
-    undo(game) {
-      unexplode(game);
     },
   },
   jolt: {
     do(game) {
       jolt(game);
     },
-    undo(game) {
-      unjolt(game);
+  },
+  diam: {
+    do(game) {
+      increseScore(game);
+    },
+  },
+  shield: {
+    do(game) {
+      shield(game);
+    },
+  },
+  range: {
+    do(game) {
+      range(game);
     },
   },
 };
@@ -37,9 +43,8 @@ let bonuses = Object.keys(bonusMap);
 
 export function generateBonus(game, position = { x: 0, y: 0 }) {
   var bonus = bonuses[Math.floor(Math.random() * bonuses.length)];
-  console.log(bonus);
   let bonusBox = new BonusBox(game, bonus, position);
-  game.gameObjects.push(bonusBox);
+  game.addObject(bonusBox);
 }
 
 export class BonusBox {
@@ -57,10 +62,6 @@ export class BonusBox {
 
   activate(game) {
     this.action.do(game);
-  }
-
-  deactivate(game) {
-    this.action.undo(game);
   }
 
   draw(context) {
@@ -104,10 +105,7 @@ export class BonusBox {
   }
 
   hit() {
-    var index = this.game.gameObjects.indexOf(this);
-    if (index !== -1) {
-      this.game.gameObjects.splice(index, 1);
-    }
+    this.game.removeObject(this);
   }
 }
 
@@ -115,24 +113,13 @@ function confuse(game) {
   game.board.maxSpeed = -game.board.maxSpeed;
 }
 
-function unconfuse(game) {
-  game.board.maxSpeed = -game.board.maxSpeed;
-}
-
 function shrink(game) {
   game.board.width = game.board.width / 2;
 }
 
-function unshrink(game) {
-  game.board.width = game.board.width * 2;
-}
-
 function explode(game) {
+  game.ball.image = game.images["ballCrit"];
   game.ball.bounceable = false;
-}
-
-function unexplode(game) {
-  game.ball.bounceable = true;
 }
 
 function jolt(game) {
@@ -140,4 +127,45 @@ function jolt(game) {
   game.ball.speed.y = game.ball.speed.y * 1.2;
 }
 
-function unjolt(game) {}
+function increseScore(game) {
+  game.score += game.scoreChunk;
+}
+
+function shield(game) {
+  let shield = new Brick(game, { x: 0, y: game.height - 10 });
+  shield.height = 10;
+  shield.width = game.width;
+  game.addObject(shield);
+}
+
+function range(game) {
+  game.board.bonus = {
+    left: 3,
+    activate() {
+      this.left--;
+      if (this.left < 0) {
+        game.board.bonus = null;
+      }
+
+      let radius = 25;
+      let bullet1 = new Bullet(
+        game,
+        { x: game.board.position.x, y: game.board.position.y },
+        { x: 0, y: -10 },
+        radius
+      );
+      let bullet2 = new Bullet(
+        game,
+        {
+          x: game.board.position.x + game.board.width - radius * 2,
+          y: game.board.position.y,
+        },
+        { x: 0, y: -10 },
+        radius
+      );
+      game.addObject(bullet1);
+      game.addObject(bullet2);
+    },
+    deactivate() {},
+  };
+}

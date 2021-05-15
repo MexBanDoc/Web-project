@@ -62,6 +62,9 @@ export class Board {
       this.width,
       this.height
     );
+
+    // context.font = '48px serif';
+    // context.fillText(this.game.score, this.position.x, this.position.y + this.height, this.width);
   }
 
   // TODO: Добавить обработку столкновений с полом и потолком
