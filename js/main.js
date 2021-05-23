@@ -25,13 +25,13 @@ function gameLoop(timestamp) {
     return;
   }
 
-  if (game.state == "Fail") {
+  if (game.state === "Fail") {
     stopGame();
     showFail();
     return;
   }
 
-  if (game.state == "Complete") {
+  if (game.state === "Complete") {
     stopGame();
     showWin();
     return;
@@ -139,5 +139,10 @@ function returnFromWin(value) {
 
 function returnFail(value) {
   fail.classList.add("hide");
+  mainMenu.classList.remove("hide");
+}
+
+function returnFromGame(value) {
+  stopGame();
   mainMenu.classList.remove("hide");
 }

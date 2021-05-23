@@ -4,6 +4,7 @@ export class ScoreBunner {
     this.position = position;
     this.height = height;
     this.scoreImage = game.images["diam"];
+    this.healthImage = game.images["heart"];
   }
 
   draw(context) {
@@ -24,6 +25,20 @@ export class ScoreBunner {
       this.game.score,
       this.position.x + this.height,
       this.position.y + this.height - 10
+    );
+
+    context.drawImage(
+        this.healthImage,
+        this.position.x + this.height * 3,
+        this.position.y,
+        this.height,
+        this.height
+    );
+
+    context.fillText(
+        this.game.lives,
+        this.position.x + this.height * 4,
+        this.position.y + this.height - 10
     );
   }
 

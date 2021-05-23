@@ -30,6 +30,9 @@ export class KeyboardHandler {
         this.board.moveRight();
         break;
       case " ":
+        if (this.board.game.state === "Idle") {
+          this.board.game.continue();
+        }
         this.board.useBonus();
         break;
     }

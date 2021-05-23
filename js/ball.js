@@ -54,8 +54,12 @@ export class Ball {
       return;
     }
 
+    if (this.position.y + this.size > this.game.height) {
+      this.game.looseBall();
+    }
+
     for (let obj of this.game.gameObjects) {
-      if (this.lastHit == obj) {
+      if (this.lastHit === obj) {
         continue;
       }
 
@@ -75,19 +79,16 @@ export class Ball {
                 this.speed.y = -this.speed.y;
               }
             } else {
-              let a = Math.atan(this.speed.y / this.speed.x);
-              let d1 = Math.abs(this.speed.x - obj.position.x);
-              let d2 = Math.abs(this.speed.x - obj.position.x - obj.width);
-              let minDist = Math.min(d1, d2);
-              let diff = (2 * minDist) / obj.width;
-              let newA = Math.min(Math.PI / 6, a * diff);
+              let a = Math.atan2(this.speed.y, this.speed.x);
+              let horizontalDelta = ((obj.position.x + obj.width / 2) - (this.position.x + this.radius)) / obj.width;
+              let newA = a + horizontalDelta;
+              newA = Math.min(newA, Math.PI * 0.85);
+              newA = Math.max(newA, -Math.PI * 0.85);
               let len = Math.sqrt(
-                this.speed.y * this.speed.y + this.speed.x * this.speed.x
+                  this.speed.y * this.speed.y + this.speed.x * this.speed.x
               );
-              this.speed.y =
-                -Math.sign(this.speed.y) * Math.abs(len * Math.sin(newA));
-              this.speed.x =
-                Math.sign(this.speed.x) * len * Math.abs(Math.cos(newA));
+              this.speed.y = - len * Math.sin(newA);
+              this.speed.x = len * Math.cos(newA);
             }
           }
         }

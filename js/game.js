@@ -31,6 +31,7 @@ export class Game {
       "bonus-range.png",
       "bonus-shield.png",
       "bonus-diam.png",
+      "heart.png",
     ];
     this.images = {};
     for (let imgName of imagesToLoad) {
@@ -67,6 +68,7 @@ export class Game {
   }
 
   start() {
+    this.lives = 5;
     this.score = 0;
     this.state = "Playing";
     this.settingManager.update();
@@ -90,6 +92,31 @@ export class Game {
     this.keyboardHandler = new KeyboardHandler(this.board);
   }
 
+  looseBall() {
+    this.state = "Idle";
+    this.lives--;
+    if (this.lives < 0) {
+      this.state = "Fail";
+      return;
+    }
+
+    this.resetBall();
+  }
+
+  resetBall() {
+    this.ball.speed = {x: 0, y: 0};
+    // this.ball.position = this.board.position;
+    this.ball.position.x = this.board.position.x;
+    this.ball.position.y = this.board.position.y;
+    this.ball.position.y -= this.ball.size;
+    this.ball.position.x += this.board.width / 2;
+  }
+
+  continue() {
+    this.state = "Playing";
+    this.ball.speed = {x: 0, y: -this.settingManager.ballSpeed}; // init speed
+  }
+
   update(dt) {
     let brickCount = 0;
     for (let obj of this.gameObjects) {
@@ -102,6 +129,10 @@ export class Game {
 
     if (brickCount === 0) {
       this.state = "Complete";
+    }
+
+    if (this.state === "Idle") {
+      this.resetBall()
     }
   }
 
