@@ -23,13 +23,10 @@ export class Brick {
   update(dt) {}
 
   hit() {
-    var index = this.game.gameObjects.indexOf(this);
-    if (index !== -1) {
-      this.game.gameObjects.splice(index, 1);
-      let chance = Math.random() < this.game.settingManager.bonusChance;
-      if (chance) {
-        generateBonus(this.game, this.position);
-      }
+    this.game.removeObject(this);
+    let chance = Math.random() < this.game.settingManager.bonusChance;
+    if (chance) {
+      generateBonus(this.game, this.position);
     }
   }
 }

@@ -2,25 +2,35 @@ import { Board } from "./board.js";
 import { Ball } from "./ball.js";
 import { KeyboardHandler } from "./keyboardHandler.js";
 import { Brick } from "./brick.js";
+import { ScoreBunner } from "./scoreBunner.js";
 
 export class Game {
   constructor(settingManager, levelManager) {
     this.settingManager = settingManager;
     this.levelManager = levelManager;
 
+    this.padding = 50;
+
     this.width = settingManager.gameWidth;
-    this.height = settingManager.gameHeight;
+    this.height = settingManager.gameHeight - this.padding;
 
     this.imagesSrcPath = "../assets/images/";
     var imagesToLoad = [
       "background.png",
       "ball.png",
+      "ball2.png",
+      "ballCrit.png",
       "board.png",
+      "diam.png",
       "brick.png",
       "bonus-confuse.png",
       "bonus-shrink.png",
       "bonus-explode.png",
       "bonus-jolt.png",
+      "bonus-money.png",
+      "bonus-range.png",
+      "bonus-shield.png",
+      "bonus-diam.png",
     ];
     this.images = {};
     for (let imgName of imagesToLoad) {
@@ -30,8 +40,22 @@ export class Game {
       this.images[imgName.split(".")[0]] = img;
     }
 
+    this.gameObjects = [];
     this.currentLevel;
     this.state = "Idle"; // "Idle" "Playing" "Paused" "Complete" "Failed"
+    this.scoreChunk = 10;
+    this.score = 0;
+  }
+
+  addObject(obj) {
+    this.gameObjects.push(obj);
+  }
+
+  removeObject(obj) {
+    var index = this.gameObjects.indexOf(obj);
+    if (index !== -1) {
+      this.gameObjects.splice(index, 1);
+    }
   }
 
   setLevelByName(name) {
@@ -39,6 +63,7 @@ export class Game {
   }
 
   start() {
+    this.score = 0;
     this.state = "Playing";
     this.settingManager.update();
     // TODO: Созлать класс блока, добавить в gameObjects
@@ -49,6 +74,11 @@ export class Game {
     );
 
     this.board = new Board(this);
+    this.scoreBunner = new ScoreBunner(
+      this,
+      { x: 0, y: this.height },
+      this.padding
+    );
 
     let bricks = this.levelManager.convertToBricks(this, this.currentLevel);
 
@@ -67,6 +97,8 @@ export class Game {
       obj.update(dt);
     }
 
+    this.scoreBunner.update(dt);
+
     if (brickCount == 0) {
       this.state = "Complete";
     }
@@ -74,6 +106,8 @@ export class Game {
 
   draw(context) {
     context.drawImage(this.images["background"], 0, 0, this.width, this.height);
+
     this.gameObjects.forEach((obj) => obj.draw(context));
+    this.scoreBunner.draw(context);
   }
 }

@@ -42,12 +42,12 @@ export class KeyboardHandler {
         this.board.stopY();
         break;
       case "a":
-        if (this.board.speed < 0) {
+        if (this.board.speed < 0 || this.board.maxSpeed < 0) {
           this.board.stop();
         }
         break;
       case "d":
-        if (this.board.speed > 0) {
+        if (this.board.speed > 0 || this.board.maxSpeed < 0) {
           this.board.stop();
         }
         break;
