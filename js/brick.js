@@ -24,6 +24,7 @@ export class Brick {
 
   hit() {
     this.game.removeObject(this);
+    this.game.changeScore(1);
     let chance = Math.random() < this.game.settingManager.bonusChance;
     if (chance) {
       generateBonus(this.game, this.position);

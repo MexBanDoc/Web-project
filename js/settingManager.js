@@ -27,8 +27,11 @@ export class SettingManager {
     // let menuTag = document.getElementById("optionsMenu");
     this.ballSpeed = parseInt(document.getElementById("ballSpeedInput").value);
     this.boardWidth = parseInt(document.getElementById("boardSizeInput").value);
+    //TODO: вынести настройки куда-нибудь из инпутов
     this.bonusChance = parseFloat(
       document.getElementById("bonusChanceInput").value
     );
   }
+
+
 }

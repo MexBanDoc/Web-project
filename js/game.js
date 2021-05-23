@@ -41,10 +41,14 @@ export class Game {
     }
 
     this.gameObjects = [];
-    this.currentLevel;
     this.state = "Idle"; // "Idle" "Playing" "Paused" "Complete" "Failed"
     this.scoreChunk = 10;
     this.score = 0;
+  }
+  //TODO: вынести повышение счета в отдельный метод
+
+  changeScore(delta){
+    this.score += delta;
   }
 
   addObject(obj) {
@@ -66,11 +70,10 @@ export class Game {
     this.score = 0;
     this.state = "Playing";
     this.settingManager.update();
-    // TODO: Созлать класс блока, добавить в gameObjects
     this.ball = new Ball(
       this,
       { x: this.width / 2, y: (this.height / 4) * 3 },
-      { x: this.settingManager.ballSpeed, y: -this.settingManager.ballSpeed }
+      { x: this.settingManager.ballSpeed / (2 ** 0.5), y: -this.settingManager.ballSpeed / (2 ** 0.5) }
     );
 
     this.board = new Board(this);
@@ -80,9 +83,9 @@ export class Game {
       this.padding
     );
 
-    let bricks = this.levelManager.convertToBricks(this, this.currentLevel);
+    let bricks = this.levelManager.generateBricks(this, this.currentLevel);
 
-    this.gameObjects = [this.ball, this.board, ...bricks];
+    this.gameObjects = [this.ball, this.board, this.scoreBunner, ...bricks];
 
     this.keyboardHandler = new KeyboardHandler(this.board);
   }
@@ -97,9 +100,7 @@ export class Game {
       obj.update(dt);
     }
 
-    this.scoreBunner.update(dt);
-
-    if (brickCount == 0) {
+    if (brickCount === 0) {
       this.state = "Complete";
     }
   }
@@ -108,6 +109,5 @@ export class Game {
     context.drawImage(this.images["background"], 0, 0, this.width, this.height);
 
     this.gameObjects.forEach((obj) => obj.draw(context));
-    this.scoreBunner.draw(context);
   }
 }

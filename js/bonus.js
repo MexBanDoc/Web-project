@@ -24,7 +24,7 @@ let bonusMap = {
   },
   diam: {
     do(game) {
-      increseScore(game);
+      increaseScore(game);
     },
   },
   shield: {
@@ -127,8 +127,8 @@ function jolt(game) {
   game.ball.speed.y = game.ball.speed.y * 1.2;
 }
 
-function increseScore(game) {
-  game.score += game.scoreChunk;
+function increaseScore(game) {
+  game.changeScore(game.scoreChunk);
 }
 
 function shield(game) {

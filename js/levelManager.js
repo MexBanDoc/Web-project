@@ -53,7 +53,7 @@ export class LevelManager {
     // }
   }
 
-  convertToBricks(game, level) {
+  generateBricks(game, level) {
     // create bricks with configuration from sm
     let bricks = [];
 
