@@ -110,7 +110,7 @@ export class BonusBox {
 }
 
 function confuse(game) {
-  game.board.maxSpeed = -game.board.maxSpeed;
+  game.board.baseSpeed = -game.board.baseSpeed;
 }
 
 function shrink(game) {

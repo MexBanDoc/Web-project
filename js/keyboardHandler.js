@@ -4,9 +4,6 @@ export class KeyboardHandler {
     this.keyDown = this.keyDownHandler.bind(this);
     this.keyUp = this.keyUpHandler.bind(this);
     document.addEventListener("keydown", this.keyDown);
-
-    // FIXME: Доска останавливается, если быстро нажать в обе стороны
-    // TODO: Вместо полного обнуления, отменять скоростьв нужном направлении
     document.addEventListener("keyup", this.keyUp);
   }
 
@@ -41,18 +38,16 @@ export class KeyboardHandler {
   keyUpHandler(event) {
     switch (event.key) {
       case "w":
+        this.board.stopMovingUp();
+        break;
       case "s":
-        this.board.stopY();
+        this.board.stopMovingDown();
         break;
       case "a":
-        if (this.board.speed < 0 || this.board.maxSpeed < 0) {
-          this.board.stop();
-        }
+        this.board.stopMovingLeft();
         break;
       case "d":
-        if (this.board.speed > 0 || this.board.maxSpeed < 0) {
-          this.board.stop();
-        }
+        this.board.stopMovingRight();
         break;
       case " ":
         this.board.stopBonus();

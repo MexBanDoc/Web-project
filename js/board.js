@@ -5,9 +5,9 @@ export class Board {
     this.width = game.settingManager.boardWidth;
     this.height = game.settingManager.boardHeight;
 
-    this.maxSpeed = 5;
-    this.speed = 0;
-    this.ySpeed = 0;
+    this.baseSpeed = 5;
+
+    this.moving = {Up : false, Down: false, Left: false, Right: false}
 
     this.position = {
       x: game.width / 2 - this.width / 2,
@@ -18,27 +18,35 @@ export class Board {
   }
 
   moveLeft() {
-    this.speed = -this.maxSpeed;
+    this.moving.Left = true;
+  }
+
+  stopMovingLeft() {
+    this.moving.Left = false;
   }
 
   moveRight() {
-    this.speed = this.maxSpeed;
+    this.moving.Right = true;
+  }
+
+  stopMovingRight() {
+    this.moving.Right = false;
   }
 
   moveUp() {
-    this.ySpeed = -this.maxSpeed;
+    this.moving.Up = true;
+  }
+
+  stopMovingUp() {
+    this.moving.Up = false;
   }
 
   moveDown() {
-    this.ySpeed = this.maxSpeed;
+    this.moving.Down = true;
   }
 
-  stop() {
-    this.speed = 0;
-  }
-
-  stopY() {
-    this.ySpeed = 0;
+  stopMovingDown() {
+    this.moving.Down = false;
   }
 
   // FIXME: Out of order
@@ -67,10 +75,9 @@ export class Board {
     // context.fillText(this.game.score, this.position.x, this.position.y + this.height, this.width);
   }
 
-  // TODO: Добавить обработку столкновений с полом и потолком
   update(dt) {
-    this.position.x += this.speed;
-    this.position.y += this.ySpeed;
+    this.position.x += this.baseSpeed * (this.moving.Right - this.moving.Left);
+    this.position.y += this.baseSpeed * (this.moving.Down - this.moving.Up);
 
     if (this.position.x < 0) {
       this.position.x = 0;
