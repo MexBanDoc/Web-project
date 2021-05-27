@@ -1,9 +1,6 @@
 #screen {
   border: 5px solid purple;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 0 auto;
 }
 
 body {
@@ -20,7 +17,7 @@ body > .hide {
   display: none;
 }
 
-.menu {
+.frame {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -42,7 +39,7 @@ body > .hide {
   );
 }
 
-.menu > button {
+.frame > button {
   border: none;
   background: #fefefe;
   color: #9e6bc7;
@@ -55,12 +52,12 @@ body > .hide {
   width: 500px;
 }
 
-.menu > button:hover {
+.frame > button:hover {
   background: #9e6bc7;
   color: #fefefe;
 }
 
-.menu > button:active {
+.frame > button:active {
   background: #cf03f8;
   color: #fefefe;
 }
@@ -75,4 +72,56 @@ body > .hide {
   padding: 20px;
   background: #f38686;
   color: #a102a1;
+}
+
+.game > .navigation > button {
+  border: none;
+  background: #fefefe;
+  color: #9e6bc7;
+  padding: 10px 10px;
+  margin-top: 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8em;
+  width: 195px;
+}
+
+.navigation > button:hover {
+  background: #9e6bc7;
+  color: #fefefe;
+}
+
+.navigation > button:active {
+  background: #cf03f8;
+  color: #fefefe;
+}
+
+#optionsMenu > .options {
+  list-style-type: none;
+  padding: 0;
+  border-radius: 3px;
+  width: 500px;
+  margin: 0 auto;
+}
+
+#optionsMenu > .options > .option {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5em;
+}
+
+.option > label {
+  flex: 2;
+}
+
+.option > input {
+  flex: 1;
+}
+
+input[type="number"] {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
 }

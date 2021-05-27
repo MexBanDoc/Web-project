@@ -17,6 +17,7 @@ sm.gameHeight = canvas.height;
 
 let game = new Game(sm, lm);
 
+
 let loopStop = false;
 let lastTime = 0;
 
@@ -85,9 +86,20 @@ backFromWin.addEventListener("click", returnFromWin);
 let backFromFail = document.querySelector("#fail > .back");
 backFromFail.addEventListener("click", returnFail);
 
+let backFromGame = document.querySelector("#gameScene > .navigation > .back");
+backFromGame.addEventListener("click", returnFromGame);
+
+let pauseGame = document.querySelector("#gameScene > .navigation > .pause");
+pauseGame.addEventListener("click", togglePause);
+
+let restartGame = document.querySelector("#gameScene > .navigation > .restart");
+restartGame.addEventListener("click", restartLevel);
+
 let mainMenu = document.getElementById("mainMenu");
 let levelMenu = document.getElementById("levelMenu");
 let optionsMenu = document.getElementById("optionsMenu");
+let gameScene = document.getElementById("gameScene");
+
 let win = document.getElementById("win");
 let fail = document.getElementById("fail");
 
@@ -104,7 +116,7 @@ function switchToOptionSelect(value) {
 
 function selectLevelAndStart(value) {
   levelMenu.classList.add("hide");
-  canvas.classList.remove("hide");
+  gameScene.classList.remove("hide");
   let levelName = value.target.textContent;
   game.setLevelByName(levelName);
 
@@ -123,12 +135,12 @@ function returnFromLevels(value) {
 
 // Game Result
 function showWin(value) {
-  canvas.classList.add("hide");
+  gameScene.classList.add("hide");
   win.classList.remove("hide");
 }
 
 function showFail(value) {
-  canvas.classList.add("hide");
+  gameScene.classList.add("hide");
   fail.classList.remove("hide");
 }
 
@@ -144,5 +156,18 @@ function returnFail(value) {
 
 function returnFromGame(value) {
   stopGame();
+  gameScene.classList.add("hide");
   mainMenu.classList.remove("hide");
+}
+
+function togglePause(value) {
+  if (game.state != "Paused") {
+    game.pause();
+  } else {
+    game.continue();
+  }
+}
+
+function restartLevel(value) {
+  game.stop();
 }

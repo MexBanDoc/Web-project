@@ -5,6 +5,22 @@ export class ScoreBunner {
     this.height = height;
     this.scoreImage = game.images["diam"];
     this.healthImage = game.images["heart"];
+    this.clocks = [
+      "🕐",
+      "🕑",
+      "🕒",
+      "🕓",
+      "🕔",
+      "🕕",
+      "🕖",
+      "🕗",
+      "🕘",
+      "🕙",
+      "🕚",
+      "🕛",
+    ];
+    this.clockIndex = 0;
+    this.dtCounter = 0;
   }
 
   draw(context) {
@@ -28,19 +44,31 @@ export class ScoreBunner {
     );
 
     context.drawImage(
-        this.healthImage,
-        this.position.x + this.height * 3,
-        this.position.y,
-        this.height,
-        this.height
+      this.healthImage,
+      this.position.x + this.height * 3,
+      this.position.y,
+      this.height,
+      this.height
     );
 
     context.fillText(
-        this.game.lives,
-        this.position.x + this.height * 4,
-        this.position.y + this.height - 10
+      this.game.lives,
+      this.position.x + this.height * 4,
+      this.position.y + this.height - 10
+    );
+
+    context.font = "42px serif";
+    context.fillText(
+      this.clocks[this.clockIndex],
+      this.position.x + this.height * 14.5,
+      this.position.y + this.height - 10
     );
   }
 
-  update(dt) {}
+  update(dt) {
+    this.dtCounter += 1;
+    if (this.dtCounter % 50 === 0) {
+      this.clockIndex = (this.clockIndex + 1) % this.clocks.length;
+    }
+  }
 }

@@ -8,16 +8,24 @@
     <title>Arkanoid</title>
   </head>
   <body>
-    <canvas id="screen" width="800" height="600" class="hide"></canvas>
+    <div id="gameScene" class="frame game hide">
+      <div class="navigation">
+        <button class="back">Quit to menu</button>
+        <button class="restart">Surrender</button>
+        <button class="mute">Mute</button>
+        <button class="pause">Pause</button>
+      </div>
+      <canvas id="screen" width="800" height="600"></canvas>
+    </div>
 
-    <div id="mainMenu" class="menu">
+    <div id="mainMenu" class="frame">
       <h2>Arkanoid</h2>
 
       <button class="StartBtn">Start</button>
       <button class="OptionsBtn">Options</button>
     </div>
 
-    <div id="levelMenu" class="menu hide">
+    <div id="levelMenu" class="frame hide">
       <h2>Choose level</h2>
 
       <button class="level">Level 1</button>
@@ -28,31 +36,34 @@
       <button class="back">Back</button>
     </div>
 
-    <div id="optionsMenu" class="menu hide">
+    <div id="optionsMenu" class="frame hide">
       <h2>Options</h2>
 
-      <label>Ball Speed
-        <input type="number" value="5" min="0.1" id="ballSpeedInput" />
-      </label>
-
-      <label>Board Size
-        <input type="number" value="200" min="0.1" id="boardSizeInput" />
-      </label>
-
-      <label>Bonus Chance
-        <input type="number" value="0.9" min="0" id="bonusChanceInput" />
-      </label>
+      <ul class="options">
+        <li class="option">
+          <label for="ballSpeedInput">Ball Speed</label>
+          <input type="number" value="5" min="0.1" id="ballSpeedInput" />
+        </li>
+        <li class="option">
+          <label for="boardSizeInput">Board Size</label>
+          <input type="number" value="200" min="0.1" id="boardSizeInput" />
+        </li>
+        <li class="option">
+          <label for="bonusChanceInput">Bonus Chance</label>
+          <input type="number" value="0.9" min="0" id="bonusChanceInput" />
+        </li>
+      </ul>
 
       <button class="back">Back</button>
     </div>
 
-    <div id="win" class="menu hide">
+    <div id="win" class="frame hide">
       <h2>Level completed</h2>
 
       <button class="back">Menu</button>
     </div>
 
-    <div id="fail" class="menu hide">
+    <div id="fail" class="frame hide">
       <h2>Level failed</h2>
 
       <button class="back">Menu</button>

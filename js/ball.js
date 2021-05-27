@@ -80,14 +80,18 @@ export class Ball {
               }
             } else {
               let a = Math.atan2(this.speed.y, this.speed.x);
-              let horizontalDelta = ((obj.position.x + obj.width / 2) - (this.position.x + this.radius)) / obj.width;
+              let horizontalDelta =
+                (obj.position.x +
+                  obj.width / 2 -
+                  (this.position.x + this.radius)) /
+                obj.width;
               let newA = a + horizontalDelta;
               newA = Math.min(newA, Math.PI * 0.85);
               newA = Math.max(newA, -Math.PI * 0.85);
               let len = Math.sqrt(
-                  this.speed.y * this.speed.y + this.speed.x * this.speed.x
+                this.speed.y * this.speed.y + this.speed.x * this.speed.x
               );
-              this.speed.y = - len * Math.sin(newA);
+              this.speed.y = -len * Math.sin(newA);
               this.speed.x = len * Math.cos(newA);
             }
           }

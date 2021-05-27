@@ -48,7 +48,7 @@ export class Game {
   }
   //TODO: вынести повышение счета в отдельный метод
 
-  changeScore(delta){
+  changeScore(delta) {
     this.score += delta;
   }
 
@@ -67,15 +67,27 @@ export class Game {
     this.currentLevel = name;
   }
 
+  pause() {
+    this.state = "Paused";
+  }
+
+  stop() {
+    this.state = "Fail";
+  }
+
   start() {
     this.lives = 5;
     this.score = 0;
-    this.state = "Playing";
+    // this.state = "Playing";
+    this.state = "Idle";
     this.settingManager.update();
     this.ball = new Ball(
       this,
       { x: this.width / 2, y: (this.height / 4) * 3 },
-      { x: this.settingManager.ballSpeed / (2 ** 0.5), y: -this.settingManager.ballSpeed / (2 ** 0.5) }
+      {
+        x: this.settingManager.ballSpeed / 2 ** 0.5,
+        y: -this.settingManager.ballSpeed / 2 ** 0.5,
+      }
     );
 
     this.board = new Board(this);
@@ -104,8 +116,7 @@ export class Game {
   }
 
   resetBall() {
-    this.ball.speed = {x: 0, y: 0};
-    // this.ball.position = this.board.position;
+    this.ball.speed = { x: 0, y: 0 };
     this.ball.position.x = this.board.position.x;
     this.ball.position.y = this.board.position.y;
     this.ball.position.y -= this.ball.size;
@@ -114,7 +125,9 @@ export class Game {
 
   continue() {
     this.state = "Playing";
-    this.ball.speed = {x: 0, y: -this.settingManager.ballSpeed}; // init speed
+    if (this.ball.speed.x === 0 && this.ball.speed.y === 0) {
+      this.ball.speed = { x: 0, y: -this.settingManager.ballSpeed }; // init speed
+    }
   }
 
   update(dt) {
@@ -132,7 +145,7 @@ export class Game {
     }
 
     if (this.state === "Idle") {
-      this.resetBall()
+      this.resetBall();
     }
   }
 
