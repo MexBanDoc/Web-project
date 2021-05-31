@@ -2,7 +2,7 @@ import { Board } from "./board.js";
 import { Ball } from "./ball.js";
 import { KeyboardHandler } from "./keyboardHandler.js";
 import { Brick } from "./brick.js";
-import { ScoreBunner } from "./scoreBunner.js";
+import { ScoreBanner } from "./scoreBanner.js";
 
 export class Game {
   constructor(settingManager, levelManager) {
@@ -91,7 +91,7 @@ export class Game {
     );
 
     this.board = new Board(this);
-    this.scoreBunner = new ScoreBunner(
+    this.scoreBanner = new ScoreBanner(
       this,
       { x: 0, y: this.height },
       this.padding
@@ -99,7 +99,7 @@ export class Game {
 
     let bricks = this.levelManager.generateBricks(this, this.currentLevel);
 
-    this.gameObjects = [this.ball, this.board, this.scoreBunner, ...bricks];
+    this.gameObjects = [this.ball, this.board, this.scoreBanner, ...bricks];
 
     this.keyboardHandler = new KeyboardHandler(this.board);
   }
@@ -121,6 +121,8 @@ export class Game {
     this.ball.position.y = this.board.position.y;
     this.ball.position.y -= this.ball.size;
     this.ball.position.x += this.board.width / 2;
+    this.ball.image = this.images["ball"];
+    this.ball.bounceable = true;
   }
 
   continue() {

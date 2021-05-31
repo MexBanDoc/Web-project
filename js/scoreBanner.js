@@ -1,4 +1,4 @@
-export class ScoreBunner {
+export class ScoreBanner {
   constructor(game, position = { x: 0, y: 0 }, height) {
     this.game = game;
     this.position = position;
