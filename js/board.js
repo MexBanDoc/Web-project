@@ -87,8 +87,8 @@ export class Board {
       this.position.x = this.game.width - this.width;
     }
 
-    if (this.position.y < 0) {
-      this.position.y = 0;
+    if (this.position.y < this.game.height * 2 / 3) {
+      this.position.y = this.game.height * 2 / 3;
     }
 
     if (this.position.y + this.height > this.game.height) {

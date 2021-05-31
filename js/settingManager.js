@@ -11,16 +11,16 @@ export class SettingManager {
 
     // brick
     this.brickWidth = 100;
-    this.brickHeight = 50;
+    this.brickHeight = 35;
 
     // board
     this.boardWidth = 200;
-    this.boardHeight = 50;
+    this.boardHeight = 25;
 
     // bonus
     this.bonusWidth = 50;
     this.bonusHeight = 50;
-    this.bonusChance = 0.8;
+    this.bonusChance = 0.4;
   }
 
   update() {
