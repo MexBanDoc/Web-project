@@ -17,7 +17,6 @@ sm.gameHeight = canvas.height;
 
 let game = new Game(sm, lm);
 
-
 let loopStop = false;
 let lastTime = 0;
 
@@ -58,7 +57,8 @@ function startGame() {
 }
 
 function stopGame() {
-  game.keyboardHandler.dispose();
+  // game.keyboardHandler.dispose();
+  game.stop();
   loopStop = true;
 }
 
@@ -69,31 +69,41 @@ startBtn.addEventListener("click", switchToLevelSelect);
 let optionsBtn = document.querySelector(".OptionsBtn");
 optionsBtn.addEventListener("click", switchToOptionSelect);
 
-let levels = document.querySelectorAll(".level");
-for (let level of levels) {
-  level.addEventListener("click", selectLevelAndStart);
+let levelBtns = document.querySelectorAll("#levelMenu > .level");
+for (let levelBtn of levelBtns) {
+  levelBtn.addEventListener("click", selectLevelAndStart);
 }
 
-let backFromOptions = document.querySelector("#optionsMenu > .back");
-backFromOptions.addEventListener("click", returnFromOptions);
+let restartCurrentLevelBtn = document.querySelector("#fail > .level");
+restartCurrentLevelBtn.addEventListener("click", startCurrentLevelFromFail);
 
-let backFromLevels = document.querySelector("#levelMenu > .back");
-backFromLevels.addEventListener("click", returnFromLevels);
+let backFromOptionsBtn = document.querySelector("#optionsMenu > .back");
+backFromOptionsBtn.addEventListener("click", returnFromOptions);
 
-let backFromWin = document.querySelector("#win > .back");
-backFromWin.addEventListener("click", returnFromWin);
+let backFromLevelsBtn = document.querySelector("#levelMenu > .back");
+backFromLevelsBtn.addEventListener("click", returnFromLevels);
 
-let backFromFail = document.querySelector("#fail > .back");
-backFromFail.addEventListener("click", returnFail);
+let selectLevelFromWinBtn = document.querySelector("#win > .level");
+selectLevelFromWinBtn.addEventListener("click", chooseLevelFromWin);
 
-let backFromGame = document.querySelector("#gameScene > .navigation > .back");
-backFromGame.addEventListener("click", returnFromGame);
+let backFromWinBtn = document.querySelector("#win > .back");
+backFromWinBtn.addEventListener("click", returnFromWin);
 
-let pauseGame = document.querySelector("#gameScene > .navigation > .pause");
-pauseGame.addEventListener("click", togglePause);
+let backFromFailBtn = document.querySelector("#fail > .back");
+backFromFailBtn.addEventListener("click", returnFail);
 
-let restartGame = document.querySelector("#gameScene > .navigation > .restart");
-restartGame.addEventListener("click", restartLevel);
+let backFromGameBtn = document.querySelector(
+  "#gameScene > .navigation > .back"
+);
+backFromGameBtn.addEventListener("click", returnFromGame);
+
+let pauseGameBtn = document.querySelector("#gameScene > .navigation > .pause");
+pauseGameBtn.addEventListener("click", togglePause);
+
+let restartGameBtn = document.querySelector(
+  "#gameScene > .navigation > .restart"
+);
+restartGameBtn.addEventListener("click", restartLevel);
 
 let mainMenu = document.getElementById("mainMenu");
 let levelMenu = document.getElementById("levelMenu");
@@ -136,6 +146,13 @@ function returnFromLevels(value) {
 // Game Result
 function showWin(value) {
   gameScene.classList.add("hide");
+
+  let score = document.querySelector("#win > .score");
+  let time = document.querySelector("#win > .time");
+
+  score.textContent = "Score: " + game.score;
+  time.textContent = "Time: " + game.scoreBanner.timeStr;
+
   win.classList.remove("hide");
 }
 
@@ -162,12 +179,26 @@ function returnFromGame(value) {
 
 function togglePause(value) {
   if (game.state != "Paused") {
+    value.target.textContent = "Continue";
     game.pause();
   } else {
+    value.target.textContent = "Pause";
     game.continue();
   }
 }
 
 function restartLevel(value) {
-  game.stop();
+  game.fail();
+}
+
+function startCurrentLevelFromFail(value) {
+  fail.classList.add("hide");
+  gameScene.classList.remove("hide");
+
+  startGame();
+}
+
+function chooseLevelFromWin(value) {
+  win.classList.add("hide");
+  levelMenu.classList.remove("hide");
 }

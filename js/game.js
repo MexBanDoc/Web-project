@@ -73,13 +73,18 @@ export class Game {
   }
 
   stop() {
+    this.scoreBanner.stopTimer();
+    this.keyboardHandler.dispose();
+    this.state = "Fail";
+  }
+
+  fail() {
     this.state = "Fail";
   }
 
   start() {
     this.lives = 5;
     this.score = 0;
-    // this.state = "Playing";
     this.state = "Idle";
     this.settingManager.update();
     this.ball = new Ball(
@@ -103,6 +108,8 @@ export class Game {
     this.gameObjects = [this.ball, this.board, this.scoreBanner, ...bricks];
 
     this.keyboardHandler = new KeyboardHandler(this.board);
+
+    this.scoreBanner.startTimer();
   }
 
   looseBall() {

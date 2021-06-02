@@ -13,6 +13,10 @@ body {
   );
 }
 
+h3 {
+  margin: 5px;
+}
+
 body > .hide {
   display: none;
 }
@@ -67,6 +71,13 @@ body > .hide {
   background: #a4e697;
   color: #a102a1;
 }
+
+#win > h3 {
+  padding: 20px;
+  background: #ab8dff;
+  color: #a102a1;
+}
+
 
 #fail > h2 {
   padding: 20px;

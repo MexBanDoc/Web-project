@@ -19,8 +19,45 @@ export class ScoreBanner {
       "🕚",
       "🕛",
     ];
+
+    this.startTime = new Date().getTime();
+    this.lastTime = this.startTime;
+    this.timerInterval;
+    this.minutes = 0;
+    this.seconds = 0;
+
     this.clockIndex = 0;
-    this.dtCounter = 0;
+    this.timeStr = "00:00";
+  }
+
+  startTimer() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+    }
+
+    this.startTime = new Date().getTime();
+    this.timerInterval = setInterval(this.updateTimer.bind(this), 1000);
+  }
+
+  updateTimer() {
+    let now = new Date().getTime();
+
+    if (this.game.state === "Paused") {
+      this.startTime += now - this.lastTime;
+    }
+
+    let spent = now - this.startTime;
+
+    this.lastTime = now;
+    this.minutes = Math.floor((spent % (1000 * 60 * 60)) / (1000 * 60));
+    this.seconds = Math.floor((spent % (1000 * 60)) / 1000);
+  }
+
+  stopTimer() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+    }
+    this.timerInterval = null;
   }
 
   draw(context) {
@@ -60,15 +97,22 @@ export class ScoreBanner {
     context.font = "42px serif";
     context.fillText(
       this.clocks[this.clockIndex],
-      this.position.x + this.height * 14.5,
+      this.position.x + this.height * 12.8,
+      this.position.y + this.height - 10
+    );
+
+    context.fillText(
+      this.timeStr,
+      this.position.x + this.height * 14,
       this.position.y + this.height - 10
     );
   }
 
   update(dt) {
-    this.dtCounter += 1;
-    if (this.dtCounter % 50 === 0) {
-      this.clockIndex = (this.clockIndex + 1) % this.clocks.length;
-    }
+    this.clockIndex = Math.floor(this.seconds / 5) % this.clocks.length;
+    this.timeStr =
+      this.minutes.toString().padStart(2, "0") +
+      ":" +
+      this.seconds.toString().padStart(2, "0");
   }
 }
