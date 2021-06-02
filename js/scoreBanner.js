@@ -21,6 +21,7 @@ export class ScoreBanner {
     ];
 
     this.startTime = new Date().getTime();
+    this.lastTime = this.startTime;
     this.timerInterval;
     this.minutes = 0;
     this.seconds = 0;
@@ -40,8 +41,14 @@ export class ScoreBanner {
 
   updateTimer() {
     let now = new Date().getTime();
-    let before = this.startTime;
-    let spent = now - before;
+
+    if (this.game.state === "Paused") {
+      this.startTime += now - this.lastTime;
+    }
+
+    let spent = now - this.startTime;
+
+    this.lastTime = now;
     this.minutes = Math.floor((spent % (1000 * 60 * 60)) / (1000 * 60));
     this.seconds = Math.floor((spent % (1000 * 60)) / 1000);
   }

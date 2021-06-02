@@ -4,6 +4,7 @@ export class LevelManager {
   constructor(path) {
     this.path = path;
     this.levels = {
+      "Level 0": [[1]],
       "Level 1": [
         [1, 1, 1, 1, 1, 1, 1, 1],
         [0, 1, 1, 1, 1, 1, 1, 0],
