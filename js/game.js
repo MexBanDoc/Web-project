@@ -45,8 +45,9 @@ export class Game {
     this.state = "Idle"; // "Idle" "Playing" "Paused" "Complete" "Failed"
     this.scoreChunk = 10;
     this.score = 0;
+
+    this.bonuses = new Set();
   }
-  //TODO: вынести повышение счета в отдельный метод
 
   changeScore(delta) {
     this.score += delta;
@@ -111,7 +112,8 @@ export class Game {
       this.state = "Fail";
       return;
     }
-
+    this.bonuses.forEach(b=>b.deactivate(this));
+    this.bonuses = new Set();
     this.resetBall();
   }
 

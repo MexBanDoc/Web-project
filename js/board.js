@@ -49,11 +49,18 @@ export class Board {
     this.moving.Down = false;
   }
 
-  // FIXME: Out of order
   useBonus() {
-    if (this.bonus) {
-      this.bonus.activate(this.game);
-    }
+    let newBonuses = new Set();
+    this.game.bonuses.forEach(bonus => {
+          if (bonus.interactive){
+            if(bonus.activate(this.game))
+              newBonuses.add(bonus);
+          }
+          else
+            newBonuses.add(bonus);
+        }
+    );
+    this.game.bonuses = newBonuses;
   }
 
   stopBonus() {

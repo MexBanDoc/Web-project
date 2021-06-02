@@ -32,6 +32,4 @@ export class SettingManager {
       document.getElementById("bonusChanceInput").value
     );
   }
-
-
 }
