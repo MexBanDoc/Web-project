@@ -17,7 +17,6 @@ sm.gameHeight = canvas.height;
 
 let game = new Game(sm, lm);
 
-
 let loopStop = false;
 let lastTime = 0;
 
@@ -58,7 +57,8 @@ function startGame() {
 }
 
 function stopGame() {
-  game.keyboardHandler.dispose();
+  // game.keyboardHandler.dispose();
+  game.stop();
   loopStop = true;
 }
 
@@ -169,5 +169,5 @@ function togglePause(value) {
 }
 
 function restartLevel(value) {
-  game.stop();
+  game.fail();
 }
