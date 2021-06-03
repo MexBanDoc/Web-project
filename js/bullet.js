@@ -10,7 +10,8 @@ export class Bullet {
   ) {
     this.game = game;
     this.image = game.images["ball2"];
-    this.radius = radius;
+    // this.radius = radius;
+    this.radius = this.game.settingManager.ballSize / 2;
     this.size = this.radius * 2;
 
     this.speed = speed;

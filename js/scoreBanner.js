@@ -73,11 +73,13 @@ export class ScoreBanner {
     );
 
     context.fillStyle = "white";
-    context.font = "48px serif";
+    // context.font = "48px serif";
+    context.font = this.height + "px serif";
     context.fillText(
       this.game.score,
       this.position.x + this.height,
-      this.position.y + this.height - 10
+      // this.position.y + this.height - 10
+      this.position.y + this.height - this.height / 5
     );
 
     context.drawImage(
@@ -91,20 +93,24 @@ export class ScoreBanner {
     context.fillText(
       this.game.lives,
       this.position.x + this.height * 4,
-      this.position.y + this.height - 10
+      // this.position.y + this.height - 10
+      this.position.y + this.height - this.height / 5
     );
 
-    context.font = "42px serif";
+    // context.font = "42px serif";
+    context.font = Math.floor(this.height * 0.875) + "px serif";
     context.fillText(
       this.clocks[this.clockIndex],
       this.position.x + this.height * 12.8,
-      this.position.y + this.height - 10
+      // this.position.y + this.height - 10
+      this.position.y + this.height - this.height / 5
     );
 
     context.fillText(
       this.timeStr,
       this.position.x + this.height * 14,
-      this.position.y + this.height - 10
+      // this.position.y + this.height - 10
+      this.position.y + this.height - this.height / 5
     );
   }
 

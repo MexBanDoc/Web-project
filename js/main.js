@@ -51,6 +51,10 @@ function gameLoop(timestamp) {
 }
 
 function startGame() {
+  game.updateSizes();
+  canvas.width = game.settingManager.gameWidth;
+  canvas.height = game.settingManager.gameHeight;
+
   game.start();
   loopStop = false;
   requestAnimationFrame(gameLoop);

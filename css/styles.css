@@ -4,6 +4,7 @@
 }
 
 body {
+  font-size: 0;
   overflow: hidden;
   background: rgb(63, 94, 251);
   background: linear-gradient(
@@ -78,11 +79,14 @@ body > .hide {
   color: #a102a1;
 }
 
-
 #fail > h2 {
   padding: 20px;
   background: #f38686;
   color: #a102a1;
+}
+
+.game > .navigation {
+  font-size: 0;
 }
 
 .game > .navigation > button {
@@ -94,7 +98,7 @@ body > .hide {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 0.8em;
+  font-size: 2rem;
   width: 195px;
 }
 
@@ -135,4 +139,28 @@ input[type="number"] {
   border-radius: 4px;
   box-sizing: border-box;
   resize: vertical;
+}
+
+@media screen and (max-width: 800px) {
+  .frame > button {
+    font-size: 1.2em;
+    width: 90%;
+  }
+
+  #optionsMenu > .options {
+    width: 100%;
+  }
+
+  .game > .navigation > button {
+    min-width: 70px;
+    width: 24%;
+    max-width: 200px;
+    padding: 4px 4px;
+    /* margin-top: 10px; */
+    margin: 0;
+
+    /* font-size: 0.5em; */
+    font-size: 0.8rem;
+    font-size: 1.7rem;
+  }
 }
