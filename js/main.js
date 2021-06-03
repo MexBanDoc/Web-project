@@ -51,9 +51,12 @@ function gameLoop(timestamp) {
 }
 
 function startGame() {
-  game.updateSizes();
-  canvas.width = game.settingManager.gameWidth;
-  canvas.height = game.settingManager.gameHeight;
+  // game.updateSizes();
+  let width = game.updateSizes();
+  // canvas.width = game.settingManager.gameWidth;
+  canvas.style.width = width + "px";
+  // canvas.height = game.settingManager.gameHeight;
+  canvas.style.height = (600 / 800) * width + "px";
 
   game.start();
   loopStop = false;
@@ -100,6 +103,11 @@ let backFromGameBtn = document.querySelector(
   "#gameScene > .navigation > .back"
 );
 backFromGameBtn.addEventListener("click", returnFromGame);
+
+let controlsBtn = document.querySelector(
+  "#gameScene > .navigation > .controls"
+);
+controlsBtn.addEventListener("click", toggleControls);
 
 let pauseGameBtn = document.querySelector("#gameScene > .navigation > .pause");
 pauseGameBtn.addEventListener("click", togglePause);
@@ -206,3 +214,51 @@ function chooseLevelFromWin(value) {
   win.classList.add("hide");
   levelMenu.classList.remove("hide");
 }
+
+let controlMode = false;
+function toggleControls(value) {
+  let controls = document.querySelectorAll(".controls");
+  for (let control of controls) {
+    if (controlMode) {
+      control.classList.add("hide");
+    } else {
+      control.classList.remove("hide");
+    }
+  }
+  controlMode = !controlMode;
+}
+
+let leftBtn = document.querySelector(".controls .left");
+let rightBtn = document.querySelector(".controls .right");
+let actionBtn = document.querySelector(".controls .action");
+let throwBtn = document.querySelector(".controls .throw");
+
+leftBtn.addEventListener("mousedown", function (event) {
+  game.board.moveLeft();
+});
+
+leftBtn.addEventListener("mouseup", function (event) {
+  game.board.stopMovingLeft();
+});
+
+rightBtn.addEventListener("mousedown", function (event) {
+  game.board.moveRight();
+});
+
+rightBtn.addEventListener("mouseup", function (event) {
+  game.board.stopMovingRight();
+});
+
+actionBtn.addEventListener("mousedown", function (event) {
+  game.board.useBonus();
+});
+
+actionBtn.addEventListener("mouseup", function (event) {
+  game.board.stopBonus();
+});
+
+throwBtn.addEventListener("mousedown", function (event) {
+  if (game.state === "Idle") {
+    game.continue();
+  }
+});

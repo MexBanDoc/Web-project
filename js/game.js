@@ -158,11 +158,11 @@ export class Game {
       width -= 20;
     }
     let height = whProportion * width;
-    if (height >= sheight * 0.8) {
-      height = sheight * 0.8;
+    if (height >= sheight * 0.7) {
+      height = sheight * 0.7;
       width = hwProportion * height;
     }
-
+    return width;
     this.settingManager.setBaseSize(width, height);
     this.padding = this.settingManager.scoreBoardHeight;
     this.width = this.settingManager.gameWidth;
