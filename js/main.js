@@ -73,7 +73,7 @@ startBtn.addEventListener("click", switchToLevelSelect);
 let optionsBtn = document.querySelector(".OptionsBtn");
 optionsBtn.addEventListener("click", switchToOptionSelect);
 
-let levelBtns = document.querySelectorAll("#levelMenu > .level");
+let levelBtns = document.querySelectorAll("#levelMenu .level");
 for (let levelBtn of levelBtns) {
   levelBtn.addEventListener("click", selectLevelAndStart);
 }

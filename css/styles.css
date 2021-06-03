@@ -44,7 +44,13 @@ body > .hide {
   );
 }
 
-.frame > button {
+.list {
+  overflow-y: auto;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.frame button {
   border: none;
   background: #fefefe;
   color: #9e6bc7;
@@ -57,12 +63,12 @@ body > .hide {
   width: 500px;
 }
 
-.frame > button:hover {
+.frame button:hover {
   background: #9e6bc7;
   color: #fefefe;
 }
 
-.frame > button:active {
+.frame button:active {
   background: #cf03f8;
   color: #fefefe;
 }
@@ -142,7 +148,7 @@ input[type="number"] {
 }
 
 @media screen and (max-width: 800px) {
-  .frame > button {
+  .frame button {
     font-size: 1.2em;
     width: 90%;
   }
@@ -160,7 +166,11 @@ input[type="number"] {
     margin: 0;
 
     /* font-size: 0.5em; */
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
     font-size: 1.7rem;
   }
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }
