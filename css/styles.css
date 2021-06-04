@@ -1,6 +1,7 @@
 #screen {
+  /* box-sizing: border-box; */
   border: 5px solid purple;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 body {
@@ -91,21 +92,21 @@ body .hide {
   color: #a102a1;
 }
 
-.game > .navigation {
+.game .navigation {
   font-size: 0;
+  margin: 0;
 }
 
-.game > .navigation > button {
+.game .navigation > button {
   border: none;
   background: #fefefe;
   color: #9e6bc7;
   padding: 10px 10px;
-  /* margin-top: 35px; */
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 2rem;
-  width: 195px;
+  font-size: 1.9rem;
+  width: 25%;
 }
 
 .navigation > button:hover {
@@ -157,9 +158,9 @@ input[type="number"] {
     width: 100%;
   }
 
-  .game > .navigation > button {
+  .game .navigation > button {
     min-width: 70px;
-    width: 24%;
+    width: 25%;
     max-width: 200px;
     padding: 4px 4px;
     margin: 0;
@@ -176,14 +177,17 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.controls {
+.controller {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  /* height: 100%; */
 }
 
-.controls > button {
+.controller > button {
   margin: 0;
 }

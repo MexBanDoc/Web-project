@@ -52,12 +52,10 @@ function gameLoop(timestamp) {
 
 function startGame() {
   // game.updateSizes();
-  let width = game.updateSizes();
-  // canvas.width = game.settingManager.gameWidth;
-  canvas.style.width = width + "px";
-  // canvas.height = game.settingManager.gameHeight;
-  canvas.style.height = (600 / 800) * width + "px";
-
+  // let width = game.updateSizes();
+  // canvas.style.width = width + "px";
+  // canvas.style.height = (600 / 800) * width + "px";
+  updateGameSize();
   game.start();
   loopStop = false;
   requestAnimationFrame(gameLoop);
@@ -100,20 +98,20 @@ let backFromFailBtn = document.querySelector("#fail > .back");
 backFromFailBtn.addEventListener("click", returnFail);
 
 let backFromGameBtn = document.querySelector(
-  "#gameScene > .navigation > .back"
+  "#gameScene .navigation > .back"
 );
 backFromGameBtn.addEventListener("click", returnFromGame);
 
 let controlsBtn = document.querySelector(
-  "#gameScene > .navigation > .controls"
+  "#gameScene .navigation > .controls"
 );
 controlsBtn.addEventListener("click", toggleControls);
 
-let pauseGameBtn = document.querySelector("#gameScene > .navigation > .pause");
+let pauseGameBtn = document.querySelector("#gameScene .navigation > .pause");
 pauseGameBtn.addEventListener("click", togglePause);
 
 let restartGameBtn = document.querySelector(
-  "#gameScene > .navigation > .restart"
+  "#gameScene .navigation > .restart"
 );
 restartGameBtn.addEventListener("click", restartLevel);
 
@@ -217,7 +215,7 @@ function chooseLevelFromWin(value) {
 
 let controlMode = false;
 function toggleControls(value) {
-  let controls = document.querySelectorAll(".controls");
+  let controls = document.querySelectorAll(".controller");
   for (let control of controls) {
     if (controlMode) {
       control.classList.add("hide");
@@ -228,10 +226,10 @@ function toggleControls(value) {
   controlMode = !controlMode;
 }
 
-let leftBtn = document.querySelector(".controls .left");
-let rightBtn = document.querySelector(".controls .right");
-let actionBtn = document.querySelector(".controls .action");
-let throwBtn = document.querySelector(".controls .throw");
+let leftBtn = document.querySelector(".controller .left");
+let rightBtn = document.querySelector(".controller .right");
+let actionBtn = document.querySelector(".controller .action");
+let throwBtn = document.querySelector(".controller .throw");
 
 leftBtn.addEventListener("mousedown", function (event) {
   game.board.moveLeft();
@@ -263,12 +261,17 @@ throwBtn.addEventListener("mousedown", function (event) {
   }
 });
 
+
+let gameArea = document.querySelector("#gameScene > .gameArea");
 window.addEventListener(
   "resize",
-  function (event) {
-    let width = game.updateSizes();
-    canvas.style.width = width + "px";
-    canvas.style.height = (600 / 800) * width + "px";
-  },
+  updateGameSize,
   true
 );
+
+function updateGameSize(event) {
+  let width = game.updateSizes();
+  gameArea.style.width = width + "px";
+  canvas.style.width = "100%";
+  canvas.style.height = (600 / 800) * width + "px";
+}
