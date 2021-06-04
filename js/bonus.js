@@ -65,6 +65,7 @@ let bonusMap = {
     range: {
         left: 3,
         activate(game){
+            console.log("range: " + this.left);
             let radius = 25;
             let bullet1 = new Bullet(
                 game,
@@ -108,7 +109,8 @@ export class BonusBox {
     constructor(game, type = "confuse", position = { x: 0, y: 0 }) {
         this.game = game;
         this.type = type;
-        this.bonus = bonusMap[type];
+        // this.bonus = bonusMap[type];
+        this.bonus = Object.assign({}, bonusMap[type]);
         this.image = game.images["bonus-" + type];
         this.width = game.settingManager.bonusWidth;
         this.height = game.settingManager.bonusHeight;
