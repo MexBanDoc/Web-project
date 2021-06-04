@@ -1,9 +1,11 @@
 #screen {
+  box-sizing: border-box;
   border: 5px solid purple;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 body {
+  font-size: 0;
   overflow: hidden;
   background: rgb(63, 94, 251);
   background: linear-gradient(
@@ -11,13 +13,24 @@ body {
     rgba(63, 94, 251, 1) 0%,
     rgba(255, 11, 61, 1) 100%
   );
+
+  -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
 }
 
 h3 {
   margin: 5px;
 }
 
-body > .hide {
+body .hide {
   display: none;
 }
 
@@ -43,7 +56,13 @@ body > .hide {
   );
 }
 
-.frame > button {
+.list {
+  overflow-y: auto;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.frame button {
   border: none;
   background: #fefefe;
   color: #9e6bc7;
@@ -56,12 +75,12 @@ body > .hide {
   width: 500px;
 }
 
-.frame > button:hover {
+.frame button:hover {
   background: #9e6bc7;
   color: #fefefe;
 }
 
-.frame > button:active {
+.frame button:active {
   background: #cf03f8;
   color: #fefefe;
 }
@@ -78,24 +97,27 @@ body > .hide {
   color: #a102a1;
 }
 
-
 #fail > h2 {
   padding: 20px;
   background: #f38686;
   color: #a102a1;
 }
 
-.game > .navigation > button {
+.game .navigation {
+  font-size: 0;
+  margin: 0;
+}
+
+.game .navigation > button {
   border: none;
   background: #fefefe;
   color: #9e6bc7;
   padding: 10px 10px;
-  margin-top: 35px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 0.8em;
-  width: 195px;
+  font-size: 1.9rem;
+  width: 25%;
 }
 
 .navigation > button:hover {
@@ -135,4 +157,48 @@ input[type="number"] {
   border-radius: 4px;
   box-sizing: border-box;
   resize: vertical;
+}
+
+@media screen and (max-width: 800px) {
+  .frame button {
+    font-size: 1.2em;
+    width: 90%;
+  }
+
+  #optionsMenu > .options {
+    width: 100%;
+  }
+
+  .game .navigation > button {
+    min-width: 70px;
+    width: 25%;
+    max-width: 200px;
+    padding: 4px 4px;
+    margin: 0;
+
+    font-size: 1.7rem;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.gameArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.controller {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* height: 100%; */
+}
+
+.controller > button {
+  margin: 0;
 }

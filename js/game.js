@@ -9,7 +9,8 @@ export class Game {
     this.settingManager = settingManager;
     this.levelManager = levelManager;
 
-    this.padding = 50;
+    // this.padding = 50;
+    this.padding = this.settingManager.scoreBoardHeight; //50; // FIXME: hardcode
 
     this.width = settingManager.gameWidth;
     this.height = settingManager.gameHeight - this.padding;
@@ -93,7 +94,8 @@ export class Game {
       {
         x: this.settingManager.ballSpeed / 2 ** 0.5,
         y: -this.settingManager.ballSpeed / 2 ** 0.5,
-      }
+      },
+      this.settingManager.ballSize / 2
     );
 
     this.board = new Board(this);
@@ -119,7 +121,7 @@ export class Game {
       this.state = "Fail";
       return;
     }
-    this.bonuses.forEach(b=>b.deactivate(this));
+    this.bonuses.forEach((b) => b.deactivate(this));
     this.bonuses = new Set();
     this.resetBall();
   }
@@ -139,6 +141,32 @@ export class Game {
     if (this.ball.speed.x === 0 && this.ball.speed.y === 0) {
       this.ball.speed = { x: 0, y: -this.settingManager.ballSpeed }; // init speed
     }
+  }
+
+  updateSizes() {
+    let defWidth = 800;
+    let defHeight = 600;
+
+    let whProportion = defHeight / defWidth;
+    let hwProportion = defWidth / defHeight;
+
+    let swidth = getWidth();
+    let sheight = getHeight();
+
+    let width = Math.min(swidth, defWidth);
+    if (swidth <= defWidth) {
+      width -= 20;
+    }
+    let height = whProportion * width;
+    if (height >= sheight * 0.7) {
+      height = sheight * 0.7;
+      width = hwProportion * height;
+    }
+    return width;
+    this.settingManager.setBaseSize(width, height);
+    this.padding = this.settingManager.scoreBoardHeight;
+    this.width = this.settingManager.gameWidth;
+    this.height = this.settingManager.gameHeight - this.padding;
   }
 
   update(dt) {
@@ -165,4 +193,12 @@ export class Game {
 
     this.gameObjects.forEach((obj) => obj.draw(context));
   }
+}
+
+function getWidth() {
+  return document.documentElement.clientWidth;
+}
+
+function getHeight() {
+  return document.documentElement.clientHeight;
 }

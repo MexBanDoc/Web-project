@@ -51,6 +51,11 @@ function gameLoop(timestamp) {
 }
 
 function startGame() {
+  // game.updateSizes();
+  // let width = game.updateSizes();
+  // canvas.style.width = width + "px";
+  // canvas.style.height = (600 / 800) * width + "px";
+  updateGameSize();
   game.start();
   loopStop = false;
   requestAnimationFrame(gameLoop);
@@ -69,7 +74,7 @@ startBtn.addEventListener("click", switchToLevelSelect);
 let optionsBtn = document.querySelector(".OptionsBtn");
 optionsBtn.addEventListener("click", switchToOptionSelect);
 
-let levelBtns = document.querySelectorAll("#levelMenu > .level");
+let levelBtns = document.querySelectorAll("#levelMenu .level");
 for (let levelBtn of levelBtns) {
   levelBtn.addEventListener("click", selectLevelAndStart);
 }
@@ -93,15 +98,20 @@ let backFromFailBtn = document.querySelector("#fail > .back");
 backFromFailBtn.addEventListener("click", returnFail);
 
 let backFromGameBtn = document.querySelector(
-  "#gameScene > .navigation > .back"
+  "#gameScene .navigation > .back"
 );
 backFromGameBtn.addEventListener("click", returnFromGame);
 
-let pauseGameBtn = document.querySelector("#gameScene > .navigation > .pause");
+let controlsBtn = document.querySelector(
+  "#gameScene .navigation > .controls"
+);
+controlsBtn.addEventListener("click", toggleControls);
+
+let pauseGameBtn = document.querySelector("#gameScene .navigation > .pause");
 pauseGameBtn.addEventListener("click", togglePause);
 
 let restartGameBtn = document.querySelector(
-  "#gameScene > .navigation > .restart"
+  "#gameScene .navigation > .restart"
 );
 restartGameBtn.addEventListener("click", restartLevel);
 
@@ -201,4 +211,87 @@ function startCurrentLevelFromFail(value) {
 function chooseLevelFromWin(value) {
   win.classList.add("hide");
   levelMenu.classList.remove("hide");
+}
+
+let controlMode = false;
+function toggleControls(value) {
+  let controls = document.querySelectorAll(".controller");
+  for (let control of controls) {
+    if (controlMode) {
+      control.classList.add("hide");
+    } else {
+      control.classList.remove("hide");
+    }
+  }
+  controlMode = !controlMode;
+}
+
+let leftBtn = document.querySelector(".controller .left");
+let rightBtn = document.querySelector(".controller .right");
+let actionBtn = document.querySelector(".controller .action");
+let throwBtn = document.querySelector(".controller .throw");
+
+
+
+let mdown = 'mousedown';
+let mleave = 'mouseleave';
+let mup = 'mouseup';
+let tdown = 'touchstart';
+let tup = 'touchend';
+
+
+// NOTE: mouse controls
+leftBtn.addEventListener(mdown, event => game.board.moveLeft());
+
+leftBtn.addEventListener(mup, event => game.board.stopMovingLeft());
+leftBtn.addEventListener(mleave, event => game.board.stopMovingLeft());
+
+rightBtn.addEventListener(mdown, event => game.board.moveRight());
+
+rightBtn.addEventListener(mup, event => game.board.stopMovingRight());
+rightBtn.addEventListener(mleave, event => game.board.stopMovingRight());
+
+actionBtn.addEventListener(mdown, event => game.board.useBonus());
+
+actionBtn.addEventListener(mup, event => game.board.stopBonus());
+
+throwBtn.addEventListener(mdown, function(event) {
+  if (game.state === "Idle") {
+    game.continue();
+  }
+});
+
+// NOTE: touch controls
+leftBtn.addEventListener(tdown, event => game.board.moveLeft());
+
+leftBtn.addEventListener(tup, event => game.board.stopMovingLeft());
+gameScene.addEventListener(tup, event => game.board.stopMovingLeft());
+
+rightBtn.addEventListener(tdown, event => game.board.moveRight());
+
+rightBtn.addEventListener(tup, event => game.board.stopMovingRight());
+gameScene.addEventListener(tup, event => game.board.stopMovingRight());
+
+actionBtn.addEventListener(tdown, event => game.board.useBonus());
+
+actionBtn.addEventListener(tup, event => game.board.stopBonus());
+
+throwBtn.addEventListener(tdown, function(event) {
+  if (game.state === "Idle") {
+    game.continue();
+  }
+});
+
+let gameArea = document.querySelector("#gameScene > .gameArea");
+window.addEventListener(
+  "resize",
+  updateGameSize,
+  true
+);
+
+function updateGameSize(event) {
+  let width = game.updateSizes();
+  gameArea.style.width = width + "px";
+  canvas.style.width = "100%";
+  canvas.style.height = (600 / 800) * width + "px";
 }

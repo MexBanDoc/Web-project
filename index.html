@@ -9,13 +9,23 @@
   </head>
   <body>
     <div id="gameScene" class="frame game hide">
-      <div class="navigation">
-        <button class="back">Quit to menu</button>
-        <button class="restart">Surrender</button>
-        <button class="mute">Mute</button>
-        <button class="pause">Pause</button>
+      <div class="gameArea">
+        <div class="navigation">
+          <button class="back">Menu</button>
+          <button class="restart">Surrender</button>
+          <button class="controls">Controls</button>
+          <button class="pause">Pause</button>
+        </div>
+        <canvas id="screen" width="800" height="600"></canvas>
+        <div class="controller hide">
+          <button class="action">Action</button>
+          <button class="throw">Throw</button>
+        </div>
+        <div class="controller hide">
+          <button class="left">Left</button>
+          <button class="right">Right</button>
+        </div>
       </div>
-      <canvas id="screen" width="800" height="600"></canvas>
     </div>
 
     <div id="mainMenu" class="frame">
@@ -27,13 +37,15 @@
 
     <div id="levelMenu" class="frame hide">
       <h2>Choose level</h2>
-
-      <button class="level">Level 0</button>
-      <button class="level">Level 1</button>
-      <button class="level">Level 2</button>
-      <button class="level">Level 3</button>
-      <button class="level">Level 4</button>
-      <button class="level">Level 5</button>
+      <div class="list">
+        <button class="level">Level 0</button>
+        <button class="level">Level 1</button>
+        <button class="level">Level 2</button>
+        <button class="level">Level 3</button>
+        <button class="level">Level 4</button>
+        <button class="level">Level 5</button>
+        <button class="level">Level 6</button>
+      </div>
       <button class="back">Back</button>
     </div>
 
