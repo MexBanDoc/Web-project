@@ -262,3 +262,13 @@ throwBtn.addEventListener("mousedown", function (event) {
     game.continue();
   }
 });
+
+window.addEventListener(
+  "resize",
+  function (event) {
+    let width = game.updateSizes();
+    canvas.style.width = width + "px";
+    canvas.style.height = (600 / 800) * width + "px";
+  },
+  true
+);
