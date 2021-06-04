@@ -231,36 +231,56 @@ let rightBtn = document.querySelector(".controller .right");
 let actionBtn = document.querySelector(".controller .action");
 let throwBtn = document.querySelector(".controller .throw");
 
-leftBtn.addEventListener("mousedown", function (event) {
-  game.board.moveLeft();
-});
 
-leftBtn.addEventListener("mouseup", function (event) {
-  game.board.stopMovingLeft();
-});
 
-rightBtn.addEventListener("mousedown", function (event) {
-  game.board.moveRight();
-});
+let mdown = 'mousedown';
+let mleave = 'mouseleave';
+let mup = 'mouseup';
+let tdown = 'touchstart';
+let tup = 'touchend';
 
-rightBtn.addEventListener("mouseup", function (event) {
-  game.board.stopMovingRight();
-});
 
-actionBtn.addEventListener("mousedown", function (event) {
-  game.board.useBonus();
-});
+// NOTE: mouse controls
+leftBtn.addEventListener(mdown, event => game.board.moveLeft());
 
-actionBtn.addEventListener("mouseup", function (event) {
-  game.board.stopBonus();
-});
+leftBtn.addEventListener(mup, event => game.board.stopMovingLeft());
+leftBtn.addEventListener(mleave, event => game.board.stopMovingLeft());
 
-throwBtn.addEventListener("mousedown", function (event) {
+rightBtn.addEventListener(mdown, event => game.board.moveRight());
+
+rightBtn.addEventListener(mup, event => game.board.stopMovingRight());
+rightBtn.addEventListener(mleave, event => game.board.stopMovingRight());
+
+actionBtn.addEventListener(mdown, event => game.board.useBonus());
+
+actionBtn.addEventListener(mup, event => game.board.stopBonus());
+
+throwBtn.addEventListener(mdown, function(event) {
   if (game.state === "Idle") {
     game.continue();
   }
 });
 
+// NOTE: touch controls
+leftBtn.addEventListener(tdown, event => game.board.moveLeft());
+
+leftBtn.addEventListener(tup, event => game.board.stopMovingLeft());
+gameScene.addEventListener(tup, event => game.board.stopMovingLeft());
+
+rightBtn.addEventListener(tdown, event => game.board.moveRight());
+
+rightBtn.addEventListener(tup, event => game.board.stopMovingRight());
+gameScene.addEventListener(tup, event => game.board.stopMovingRight());
+
+actionBtn.addEventListener(tdown, event => game.board.useBonus());
+
+actionBtn.addEventListener(tup, event => game.board.stopBonus());
+
+throwBtn.addEventListener(tdown, function(event) {
+  if (game.state === "Idle") {
+    game.continue();
+  }
+});
 
 let gameArea = document.querySelector("#gameScene > .gameArea");
 window.addEventListener(
