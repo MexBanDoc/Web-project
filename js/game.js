@@ -99,6 +99,7 @@ export class Game {
     );
 
     this.board = new Board(this);
+    this.board.baseSpeed = this.settingManager.boardSpeed;
     this.scoreBanner = new ScoreBanner(
       this,
       { x: 0, y: this.height },

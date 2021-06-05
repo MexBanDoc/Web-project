@@ -54,10 +54,15 @@ export class SettingManager {
   }
 
   update() {
+    let ballSize = parseInt(document.getElementById("ballSizeInput").value);
+    this.ballSize = (this.gameWidth / 800) * ballSize;
     let ballSpeed = parseInt(document.getElementById("ballSpeedInput").value);
     this.ballSpeed = (this.gameWidth / 800) * ballSpeed;
+
     let boardWidth = parseInt(document.getElementById("boardSizeInput").value);
     this.boardWidth = (this.gameWidth / 800) * boardWidth;
+    let boardSpeed = parseInt(document.getElementById("boardSpeedInput").value);
+    this.boardSpeed = (this.gameWidth / 800) * boardSpeed;
 
     //TODO: вынести настройки куда-нибудь из инпутов
     this.bonusChance = parseFloat(
