@@ -30,6 +30,10 @@ h3 {
   margin: 5px;
 }
 
+h2 {
+  margin-top: 0;
+}
+
 body .hide {
   display: none;
 }
