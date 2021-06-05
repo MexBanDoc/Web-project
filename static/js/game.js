@@ -84,6 +84,7 @@ export class Game {
   }
 
   start() {
+    this.bonuses.clear();
     this.lives = 5;
     this.score = 0;
     this.state = "Idle";
