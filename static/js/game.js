@@ -15,7 +15,7 @@ export class Game {
     this.width = settingManager.gameWidth;
     this.height = settingManager.gameHeight - this.padding;
 
-    this.imagesSrcPath = "../assets/images/";
+    this.imagesSrcPath = "../static/assets/images/";
     var imagesToLoad = [
       "background.png",
       "ball.png",
