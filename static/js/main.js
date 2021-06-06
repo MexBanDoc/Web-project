@@ -103,6 +103,9 @@ backFromReferenceBtn.addEventListener("click", returnFromReference);
 let selectLevelFromWinBtn = document.querySelector("#win > .level");
 selectLevelFromWinBtn.addEventListener("click", chooseLevelFromWin);
 
+let selectNextLevelFromWinBtn = document.querySelector("#win > .nextlevel");
+selectNextLevelFromWinBtn.addEventListener("click", nextLevelFromWin);
+
 let backFromWinBtn = document.querySelector("#win > .back");
 backFromWinBtn.addEventListener("click", returnFromWin);
 
@@ -183,6 +186,12 @@ function showWin(value) {
   score.textContent = "Score: " + game.score;
   time.textContent = "Time: " + game.scoreBanner.timeStr;
 
+  let nextLevelBtn = document.querySelector('.nextlevel');
+  nextLevelBtn.classList.remove('hide');
+  let nextLevelName = getNextLevelName(game.currentLevel);
+  if (!nextLevelName) {
+    nextLevelBtn.classList.add('hide');
+  }
   win.classList.remove("hide");
 }
 
@@ -235,6 +244,29 @@ function chooseLevelFromWin(value) {
   levelMenu.classList.remove("hide");
 }
 
+function nextLevelFromWin(value) {
+  
+  
+
+  let nextLevelName = getNextLevelName(game.currentLevel);
+  if (nextLevelName) {
+    game.setLevelByName(nextLevelName);
+    startGame();
+    win.classList.add("hide");
+    gameScene.classList.remove("hide");
+  }
+}
+
+function getNextLevelName(levelNane) {
+  let levelNames = game.levelManager.getLevelNames();
+  let pos = levelNames.indexOf(levelNane);
+  let nextPos = pos + 1;
+  if (nextPos < levelNames.length) {
+    return levelNames[nextPos];
+  }
+  return undefined;
+}
+
 let controlMode = false;
 function toggleControls(value) {
   let controls = document.querySelectorAll(".controller");
@@ -250,6 +282,8 @@ function toggleControls(value) {
 
 let leftBtn = document.querySelector(".controller .left");
 let rightBtn = document.querySelector(".controller .right");
+let upBtn = document.querySelector(".controller .up");
+let downBtn = document.querySelector(".controller .down");
 let actionBtn = document.querySelector(".controller .action");
 let throwBtn = document.querySelector(".controller .throw");
 
@@ -260,20 +294,33 @@ let tdown = "touchstart";
 let tup = "touchend";
 
 // NOTE: mouse controls
+//left
 leftBtn.addEventListener(mdown, (event) => game.board.moveLeft());
 
 leftBtn.addEventListener(mup, (event) => game.board.stopMovingLeft());
 leftBtn.addEventListener(mleave, (event) => game.board.stopMovingLeft());
+//up
+upBtn.addEventListener(mdown, (event) => game.board.moveUp());
 
+upBtn.addEventListener(mup, (event) => game.board.stopMovingUp());
+upBtn.addEventListener(mleave, (event) => game.board.stopMovingUp());
+//right
 rightBtn.addEventListener(mdown, (event) => game.board.moveRight());
 
 rightBtn.addEventListener(mup, (event) => game.board.stopMovingRight());
 rightBtn.addEventListener(mleave, (event) => game.board.stopMovingRight());
+//down
+downBtn.addEventListener(mdown, (event) => game.board.moveDown());
 
+downBtn.addEventListener(mup, (event) => game.board.stopMovingDown());
+downBtn.addEventListener(mleave, (event) => game.board.stopMovingDown());
+
+//action
 actionBtn.addEventListener(mdown, (event) => game.board.useBonus());
 
 actionBtn.addEventListener(mup, (event) => game.board.stopBonus());
 
+//throw
 throwBtn.addEventListener(mdown, function (event) {
   if (game.state === "Idle") {
     game.continue();
@@ -281,16 +328,27 @@ throwBtn.addEventListener(mdown, function (event) {
 });
 
 // NOTE: touch controls
+//left
 leftBtn.addEventListener(tdown, (event) => game.board.moveLeft());
 
 leftBtn.addEventListener(tup, (event) => game.board.stopMovingLeft());
 gameScene.addEventListener(tup, (event) => game.board.stopMovingLeft());
+//up
+upBtn.addEventListener(tdown, (event) => game.board.moveUp());
 
+upBtn.addEventListener(tup, (event) => game.board.stopMovingUp());
+gameScene.addEventListener(tup, (event) => game.board.stopMovingUp());
+//right
 rightBtn.addEventListener(tdown, (event) => game.board.moveRight());
 
 rightBtn.addEventListener(tup, (event) => game.board.stopMovingRight());
 gameScene.addEventListener(tup, (event) => game.board.stopMovingRight());
+//down
+downBtn.addEventListener(tdown, (event) => game.board.moveDown());
 
+downBtn.addEventListener(tup, (event) => game.board.stopMovingDown());
+gameScene.addEventListener(tup, (event) => game.board.stopMovingDown());
+//bonus
 actionBtn.addEventListener(tdown, (event) => game.board.useBonus());
 
 actionBtn.addEventListener(tup, (event) => game.board.stopBonus());

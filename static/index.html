@@ -24,11 +24,13 @@
         <canvas id="screen" width="800" height="600"></canvas>
         <div class="controller hide">
           <button class="action">Action</button>
+          <button class="up">△</button>
           <button class="throw">Throw</button>
         </div>
         <div class="controller hide">
-          <button class="left">←</button>
-          <button class="right">→</button>
+          <button class="left">◁</button>
+          <button class="down">▽</button>
+          <button class="right">▷</button>
         </div>
       </div>
     </div>
@@ -91,8 +93,7 @@
         <div class="option">
           <img src="/static/assets/images/bonus-shield.png" alt="..." />
           <p>
-            Puts big brick under your platform as defence<br />You have to
-            destroy it to complete level
+            Puts big brick under your platform as defence
           </p>
         </div>
         <div class="option">
@@ -168,6 +169,7 @@
       <h2>Level completed</h2>
       <h3 class="score"></h3>
       <h3 class="time"></h3>
+      <button class="nextlevel">Next Level</button>
       <button class="level">Choose Level</button>
       <button class="back">Menu</button>
     </div>

@@ -136,4 +136,8 @@ export class LevelManager {
 
     return bricks;
   }
+
+  getLevelNames() {
+    return Object.keys(this.levels);
+  }
 }
