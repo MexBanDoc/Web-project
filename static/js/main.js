@@ -1,21 +1,23 @@
 import { Game } from "./game.js";
 import { LevelManager } from "./levelManager.js";
 import { SettingManager } from "./settingManager.js";
+import { AudioManager } from "./audioManager.js";
 
 let canvas = document.getElementById("screen");
 let context = canvas.getContext("2d");
 
-let lm = new LevelManager("levels");
-let sm = new SettingManager();
-
+let levelManager = new LevelManager("levels");
+let settingManager = new SettingManager();
+let audioManager = new AudioManager();
+audioManager.setUpSounds();
 // TODO: передавать размеры в update draw
 // TODO: использовать размеры viewport
 // * TODO: возможность изменять размеры игры
 
-sm.gameWeight = canvas.width;
-sm.gameHeight = canvas.height;
+settingManager.gameWeight = canvas.width;
+settingManager.gameHeight = canvas.height;
 
-let game = new Game(sm, lm);
+let game = new Game(settingManager, levelManager, audioManager);
 
 let loopStop = false;
 let lastTime = 0;
@@ -40,7 +42,7 @@ function gameLoop(timestamp) {
   // FIXME: нужен ли TimeDelta?
   let dt = timestamp - lastTime;
   lastTime = timestamp;
-  context.clearRect(0, 0, sm.gameWeight, sm.gameHeight);
+  context.clearRect(0, 0, settingManager.gameWeight, settingManager.gameHeight);
 
   if (game.state != "Paused") {
     game.update(dt);
@@ -170,6 +172,7 @@ function returnFromLevels(value) {
 
 // Game Result
 function showWin(value) {
+  audioManager.audios['win'].play();
   gameScene.classList.add("hide");
 
   let score = document.querySelector("#win > .score");
@@ -182,11 +185,13 @@ function showWin(value) {
 }
 
 function showFail(value) {
+  audioManager.audios['fail'].play();
   gameScene.classList.add("hide");
   fail.classList.remove("hide");
 }
 
 function returnFromWin(value) {
+  
   win.classList.add("hide");
   mainMenu.classList.remove("hide");
 }
@@ -331,4 +336,12 @@ function checkMobile(event){
   if(~['Android', 'iPhone', 'iPod', 'iPad', 'BlackBerry'].indexOf(navigator.platform)) {
       toggleControls();
   }
+}
+
+
+let buttons = document.body.getElementsByTagName("button");
+for (let btn of buttons) {
+  btn.addEventListener('click', function(event) {
+    audioManager.audios['button'].play();
+  });
 }
