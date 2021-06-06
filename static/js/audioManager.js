@@ -20,6 +20,7 @@ export class AudioManager {
 
   tryPlay(sound) {
     if (!this.muted) {
+      this.audios[sound].currentTime = 0;
       this.audios[sound].play();
     }
   }
@@ -30,6 +31,13 @@ export class AudioManager {
       audio.currentTime = 0;
     }
   }
+
+  setVolume(volume) {
+    for (const [name, audio] of Object.entries(this.audios)) {
+      audio.volume = volume;
+      audio.currentTime = 0;
+    }
+  }  
 
   mute() {
     this.muted = true;

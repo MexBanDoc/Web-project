@@ -29,6 +29,8 @@ export class SettingManager {
     this.scoreBoardHeightProportion = getProportion(50, 800);
 
     this.recalcSizes();
+
+    this.soundVolume = 0;
   }
 
   setBaseSize(gameWidth, gameHeight) {
@@ -64,6 +66,7 @@ export class SettingManager {
     let boardSpeed = parseInt(document.getElementById("boardSpeedInput").value);
     this.boardSpeed = (this.gameWidth / 800) * boardSpeed;
 
+    this.soundVolume = parseInt(document.getElementById("musicVolumeInput").value) / 100;
     //TODO: вынести настройки куда-нибудь из инпутов
     this.bonusChance = parseFloat(
       document.getElementById("bonusChanceInput").value

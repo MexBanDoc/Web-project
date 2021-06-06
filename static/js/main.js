@@ -366,4 +366,5 @@ applyBtn.addEventListener('click', applyOptions);
 
 function applyOptions(event) {
   game.settingManager.update();
+  game.audioManager.setVolume(game.settingManager.soundVolume);
 }
