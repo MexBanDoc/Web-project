@@ -67,6 +67,7 @@ export class SettingManager {
     this.boardSpeed = (this.gameWidth / 800) * boardSpeed;
 
     this.soundVolume = parseInt(document.getElementById("musicVolumeInput").value) / 100;
+    this.backgroundAudio = document.getElementById("backgroundMusicInput").value;
     //TODO: вынести настройки куда-нибудь из инпутов
     this.bonusChance = parseFloat(
       document.getElementById("bonusChanceInput").value

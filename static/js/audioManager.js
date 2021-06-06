@@ -25,6 +25,11 @@ export class AudioManager {
     }
   }
 
+  stopSound(sound) {
+    this.audios[sound].pause();
+    this.audios[sound].currentTime = 0;
+  }
+
   stopEverySound() {
     for (let audio of this.audios) {
       audio.pause();
@@ -37,23 +42,23 @@ export class AudioManager {
       audio.volume = volume;
       audio.currentTime = 0;
     }
-  }  
+  }
 
   mute() {
     this.muted = true;
   }
 
   setUpSounds() {
-    this.loadFiles()
-    this.audios['button'].playbackRate = 4;
-    this.audios['range'].playbackRate = 3;
+    this.loadFiles();
+    this.audios["button"].playbackRate = 4;
+    this.audios["range"].playbackRate = 3;
   }
 
   loadFiles() {
     for (let fname of this.audiofilenames) {
       let path = this.audioSrcPath + fname;
       let audio = new Audio(path);
-      
+
       this.audios[fname.split(".")[0]] = audio;
     }
   }

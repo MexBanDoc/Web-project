@@ -264,3 +264,16 @@ input[type="number"] {
 .controller > button {
   margin: 0;
 }
+
+
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(4); /* IE */
+  -moz-transform: scale(4); /* FF */
+  -webkit-transform: scale(4); /* Safari and Chrome */
+  -o-transform: scale(4); /* Opera */
+  transform: scale(4);
+  padding: 10px;
+}

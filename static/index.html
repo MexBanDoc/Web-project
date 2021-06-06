@@ -5,8 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="static/css/styles.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <title>Arkanoid</title>
   </head>
   <body>
@@ -61,81 +64,59 @@
       </div>
       <div id="bonusList" class="options list">
         <div class="option">
-          <img src="/static/assets/images/bonus-confuse.png" alt="...">
-            <p>Swaps movement direction</p>
+          <img src="/static/assets/images/bonus-confuse.png" alt="..." />
+          <p>Swaps movement direction</p>
         </div>
         <div class="option">
-          <img src="/static/assets/images/bonus-diam.png" alt="...">
-            <p>Increases your diamond score</p>
+          <img src="/static/assets/images/bonus-diam.png" alt="..." />
+          <p>Increases your diamond score</p>
         </div>
         <div class="option">
-          <img src="/static/assets/images/bonus-explode.png" alt="...">
-            <p>Makes ball unstoppable</p>
-        </div>
-
-        <div class="option">
-          <img src="/static/assets/images/bonus-jolt.png" alt="...">
-            <p>Increases ball speed</p>
+          <img src="/static/assets/images/bonus-explode.png" alt="..." />
+          <p>Makes ball unstoppable</p>
         </div>
 
         <div class="option">
-          <img src="/static/assets/images/bonus-range.png" alt="...">
-            <p>Allows shooting</p>
+          <img src="/static/assets/images/bonus-jolt.png" alt="..." />
+          <p>Increases ball speed</p>
+        </div>
+
+        <div class="option">
+          <img src="/static/assets/images/bonus-range.png" alt="..." />
+          <p>Allows shooting</p>
         </div>
         <div class="option">
-          <img src="/static/assets/images/bonus-shield.png" alt="...">
-            <p>Puts big brick under your platform as defence<br>You have to destroy it to complete level</p>
+          <img src="/static/assets/images/bonus-shield.png" alt="..." />
+          <p>
+            Puts big brick under your platform as defence<br />You have to
+            destroy it to complete level
+          </p>
         </div>
         <div class="option">
-          <img src="/static/assets/images/bonus-shrink.png" alt="...">
-            <p>Reduces board size in half</p>
+          <img src="/static/assets/images/bonus-shrink.png" alt="..." />
+          <p>Reduces board size in half</p>
         </div>
       </div>
-        <!-- <ul id="bonusList" class="options list">
-          <li class="option">
-            <img src="/static/assets/images/bonus-confuse.png" alt="...">
-            <p>Swaps movement direction</p>
-          </li>
-          <li class="option">
-            <img src="/static/assets/images/bonus-diam.png" alt="...">
-            <p>Increases your diamond score</p>
-          </li>
-          <li class="option">
-            <img src="/static/assets/images/bonus-explode.png" alt="...">
-            <p>Makes ball unstoppable</p>
-          </li>
-          <li class="option">
-            <img src="/static/assets/images/bonus-jolt.png" alt="...">
-            <p>Increases ball speed</p>
-          </li>
-          <li class="option">
-            <img src="/static/assets/images/bonus-range.png" alt="...">
-            <p>Allows shooting</p>
-          </li>
-          <li class="option">
-            <img src="/static/assets/images/bonus-shield.png" alt="...">
-            <p>Puts big brick under your platform as defence<br>You have to destroy it to complete level</p>
-          </li>
-          <li class="option">
-            <img src="/static/assets/images/bonus-shrink.png" alt="...">
-            <p>Reduces board size in half</p>
-          </li>
-        </ul> -->
 
-        <ul id="contolList" class="options list hide">
-          <li class="option">
-            <p>Use WASD/arrows to move platform</p>
-          </li>
-          <li class="option">
-            <p>Press whitespace/"Action" to fire when you have corresponding bonus</p>
-          </li>
-          <li class="option">
-            <p>Ingame press "Controls" to use on-screen controls</p>
-          </li>
-          <li class="option">
-            <p>Game is lost after If you lose the ball when you have 0 hearts you will lose</p>
-          </li>
-        </ul>
+      <ul id="contolList" class="options list hide">
+        <li class="option">
+          <p>Use WASD/arrows to move platform</p>
+        </li>
+        <li class="option">
+          <p>
+            Press whitespace/"Action" to fire when you have corresponding bonus
+          </p>
+        </li>
+        <li class="option">
+          <p>Ingame press "Controls" to use on-screen controls</p>
+        </li>
+        <li class="option">
+          <p>
+            Game is lost after If you lose the ball when you have 0 hearts you
+            will lose
+          </p>
+        </li>
+      </ul>
       <button class="back">Back</button>
     </div>
 
@@ -168,6 +149,11 @@
         <li class="option">
           <label for="musicVolumeInput">Audio</label>
           <input type="number" value="20" min="0" id="musicVolumeInput" />
+        </li>
+
+        <li class="option">
+          <label for="backgroundMusicInput">Background Music</label>
+          <input type="checkbox" id="backgroundMusicInput" />
         </li>
       </ul>
 

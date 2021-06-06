@@ -367,4 +367,10 @@ applyBtn.addEventListener('click', applyOptions);
 function applyOptions(event) {
   game.settingManager.update();
   game.audioManager.setVolume(game.settingManager.soundVolume);
+  if (game.settingManager.backgroundAudio) {
+    game.audioManager.tryPlay('background');
+  }
+  else {
+    game.audioManager.tryPlay('background');
+  }
 }
