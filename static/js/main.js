@@ -7,7 +7,9 @@ let canvas = document.getElementById("screen");
 let context = canvas.getContext("2d");
 
 let levelManager = new LevelManager("levels");
+
 let settingManager = new SettingManager();
+
 let audioManager = new AudioManager();
 audioManager.setUpSounds();
 // TODO: передавать размеры в update draw
@@ -172,7 +174,7 @@ function returnFromLevels(value) {
 
 // Game Result
 function showWin(value) {
-  audioManager.audios['win'].play();
+  audioManager.tryPlay('win');
   gameScene.classList.add("hide");
 
   let score = document.querySelector("#win > .score");
@@ -185,7 +187,7 @@ function showWin(value) {
 }
 
 function showFail(value) {
-  audioManager.audios['fail'].play();
+  audioManager.tryPlay('fail');
   gameScene.classList.add("hide");
   fail.classList.remove("hide");
 }
@@ -352,11 +354,11 @@ for (let btn of backButtons) {
 
 
 function playAudioBtn(event) {
-  audioManager.audios['button'].play();
+  audioManager.tryPlay('button');
 }
 
 function playAudioBackBtn(event) {
-  audioManager.audios['backButton'].play();
+  audioManager.tryPlay('backButton');
 }
 
 let applyBtn = document.querySelector('.apply');
