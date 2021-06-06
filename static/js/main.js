@@ -371,6 +371,6 @@ function applyOptions(event) {
     game.audioManager.tryPlay('background');
   }
   else {
-    game.audioManager.tryPlay('background');
+    game.audioManager.stopSound('background');
   }
 }
