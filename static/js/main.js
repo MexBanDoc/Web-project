@@ -296,16 +296,27 @@ throwBtn.addEventListener(mdown, function (event) {
 });
 
 // NOTE: touch controls
+//left
 leftBtn.addEventListener(tdown, (event) => game.board.moveLeft());
 
 leftBtn.addEventListener(tup, (event) => game.board.stopMovingLeft());
 gameScene.addEventListener(tup, (event) => game.board.stopMovingLeft());
+//up
+upBtn.addEventListener(tdown, (event) => game.board.moveUp());
 
+upBtn.addEventListener(tup, (event) => game.board.stopMovingUp());
+gameScene.addEventListener(tup, (event) => game.board.stopMovingUp());
+//right
 rightBtn.addEventListener(tdown, (event) => game.board.moveRight());
 
 rightBtn.addEventListener(tup, (event) => game.board.stopMovingRight());
 gameScene.addEventListener(tup, (event) => game.board.stopMovingRight());
+//down
+downBtn.addEventListener(tdown, (event) => game.board.moveDown());
 
+downBtn.addEventListener(tup, (event) => game.board.stopMovingDown());
+gameScene.addEventListener(tup, (event) => game.board.stopMovingDown());
+//bonus
 actionBtn.addEventListener(tdown, (event) => game.board.useBonus());
 
 actionBtn.addEventListener(tup, (event) => game.board.stopBonus());
