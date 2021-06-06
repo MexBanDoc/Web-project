@@ -55,36 +55,56 @@
 
     <div id="referenceMenu" class="frame hide">
       <h2>Reference</h2>
-      <button class="referenceBonuses">Bonuses</button>
-      <button class="referenceControls">Controls</button>
-        <ul class="options list">
+      <div class="navigation">
+        <button class="bonusListBtn">Bonuses</button>
+        <button class="contolListBtn">Controls</button>
+      </div>
+        <ul id="bonusList" class="options list">
           <li class="option">
-            <img src="/static/assets/images/bonus-confuse.png" alt="..." width="">
-            <p>with two columns</p>
+            <img src="/static/assets/images/bonus-confuse.png" alt="...">
+            <p>Swaps opposite controls</p>
           </li>
           <li class="option">
-            <img src="/static/assets/images/bonus-diam.png" alt="..." width="">
-            <p>with two columns</p>
+            <img src="/static/assets/images/bonus-diam.png" alt="...">
+            <p>Gives 10 diamonds</p>
           </li>
           <li class="option">
-            <img src="/static/assets/images/bonus-explode.png" alt="..." width="">
-            <p>with two columns</p>
+            <img src="/static/assets/images/bonus-explode.png" alt="...">
+            <p>Makes ball unstoppable</p>
           </li>
           <li class="option">
-            <img src="/static/assets/images/bonus-jolt.png" alt="..." width="">
-            <p>with two columns</p>
+            <img src="/static/assets/images/bonus-jolt.png" alt="...">
+            <p>Accelerates the ball</p>
           </li>
           <li class="option">
-            <img src="/static/assets/images/bonus-range.png" alt="..." width="">
-            <p>with two columns</p>
+            <img src="/static/assets/images/bonus-range.png" alt="...">
+            <p>Allows to shoot</p>
           </li>
           <li class="option">
-            <img src="/static/assets/images/bonus-shield.png" alt="..." width="">
-            <p>with two columns</p>
+            <img src="/static/assets/images/bonus-shield.png" alt="...">
+            <p>Puts a block like a shield<br>Must be broken to complete</p>
           </li>
           <li class="option">
-            <img src="/static/assets/images/bonus-shrink.png" alt="..." width="">
-            <p>with two columns</p>
+            <img src="/static/assets/images/bonus-shrink.png" alt="...">
+            <p>Reduces the board in half</p>
+          </li>
+        </ul>
+
+        <ul id="contolList" class="options list hide">
+          <li class="option">
+            <p>Use WASD controls</p>
+          </li>
+          <li class="option">
+            <p>To use Range Bonus press whitespace or button "Action"</p>
+          </li>
+          <li class="option">
+            <p>To show control buttons press "Controls" button</p>
+          </li>
+          <li class="option">
+            <p>Time and Score mean nothing</p>
+          </li>
+          <li class="option">
+            <p>If you lose the ball when you have 0 hearts you will lose</p>
           </li>
         </ul>
       <button class="back">Back</button>

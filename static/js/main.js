@@ -294,6 +294,28 @@ throwBtn.addEventListener(tdown, function (event) {
   }
 });
 
+
+let bonusList = document.getElementById("bonusList");
+let contolList = document.getElementById("contolList");
+
+
+let bonusListBtn = document.querySelector(".bonusListBtn");
+bonusListBtn.addEventListener('click', showBonusList)
+let contolListBtn = document.querySelector(".contolListBtn");
+contolListBtn.addEventListener('click', showControlList)
+
+
+function showBonusList(event) {
+  contolList.classList.add("hide");
+  bonusList.classList.remove("hide");
+}
+
+function showControlList(event) {
+  bonusList.classList.add("hide");
+  contolList.classList.remove("hide");
+}
+
+
 let gameArea = document.querySelector("#gameScene > .gameArea");
 window.addEventListener("resize", updateGameSize, true);
 window.addEventListener('resize', checkMobile, true);

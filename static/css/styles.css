@@ -170,11 +170,15 @@ body .hide {
 }
 
 .option > p {
-  flex: 2;
+  flex: 5;
 }
 
 #referenceMenu .back {
   margin-bottom: 20px;
+}
+
+#referenceMenu .options {
+  width: 100%;
 }
 
 input[type="number"] {
@@ -185,7 +189,8 @@ input[type="number"] {
 }
 
 #referenceMenu img {
-  width: 100px;
+  width: 10%;
+  height: 10%;
   float: left;
 }
 
@@ -212,6 +217,10 @@ input[type="number"] {
 
 ::-webkit-scrollbar {
   width: 0;
+}
+
+#referenceMenu ::-webkit-scrollbar {
+  width: 20px;
 }
 
 .gameArea {
