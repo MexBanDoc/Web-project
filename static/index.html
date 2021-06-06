@@ -62,11 +62,11 @@
       <div id="bonusList" class="options list">
         <div class="option">
           <img src="/static/assets/images/bonus-confuse.png" alt="...">
-            <p>Swaps movement direction</p>
+            <p>Swaps opposite controls</p>
         </div>
         <div class="option">
           <img src="/static/assets/images/bonus-diam.png" alt="...">
-            <p>Increases your diamond score</p>
+            <p>Gives 10 diamonds</p>
         </div>
         <div class="option">
           <img src="/static/assets/images/bonus-explode.png" alt="...">
@@ -75,65 +75,38 @@
 
         <div class="option">
           <img src="/static/assets/images/bonus-jolt.png" alt="...">
-            <p>Increases ball speed</p>
+            <p>Accelerates the ball</p>
         </div>
 
         <div class="option">
           <img src="/static/assets/images/bonus-range.png" alt="...">
-            <p>Allows shooting</p>
+            <p>Allows to shoot</p>
         </div>
         <div class="option">
           <img src="/static/assets/images/bonus-shield.png" alt="...">
-            <p>Puts big brick under your platform as defence<br>You have to destroy it to complete level</p>
+            <p>Puts a block like a shield<br>Must be broken to complete</p>
         </div>
         <div class="option">
           <img src="/static/assets/images/bonus-shrink.png" alt="...">
-            <p>Reduces board size in half</p>
+            <p>Reduces the board in half</p>
         </div>
       </div>
-        <!-- <ul id="bonusList" class="options list">
-          <li class="option">
-            <img src="/static/assets/images/bonus-confuse.png" alt="...">
-            <p>Swaps movement direction</p>
-          </li>
-          <li class="option">
-            <img src="/static/assets/images/bonus-diam.png" alt="...">
-            <p>Increases your diamond score</p>
-          </li>
-          <li class="option">
-            <img src="/static/assets/images/bonus-explode.png" alt="...">
-            <p>Makes ball unstoppable</p>
-          </li>
-          <li class="option">
-            <img src="/static/assets/images/bonus-jolt.png" alt="...">
-            <p>Increases ball speed</p>
-          </li>
-          <li class="option">
-            <img src="/static/assets/images/bonus-range.png" alt="...">
-            <p>Allows shooting</p>
-          </li>
-          <li class="option">
-            <img src="/static/assets/images/bonus-shield.png" alt="...">
-            <p>Puts big brick under your platform as defence<br>You have to destroy it to complete level</p>
-          </li>
-          <li class="option">
-            <img src="/static/assets/images/bonus-shrink.png" alt="...">
-            <p>Reduces board size in half</p>
-          </li>
-        </ul> -->
 
         <ul id="contolList" class="options list hide">
           <li class="option">
-            <p>Use WASD/arrows to move platform</p>
+            <p>Use WASD controls</p>
           </li>
           <li class="option">
-            <p>Press whitespace/"Action" to fire when you have corresponding bonus</p>
+            <p>To use Range Bonus press whitespace or button "Action"</p>
           </li>
           <li class="option">
-            <p>Ingame press "Controls" to use on-screen controls</p>
+            <p>To show control buttons press "Controls" button</p>
           </li>
           <li class="option">
-            <p>Game is lost after If you lose the ball when you have 0 hearts you will lose</p>
+            <p>Time and Score mean nothing</p>
+          </li>
+          <li class="option">
+            <p>If you lose the ball when you have 0 hearts you will lose</p>
           </li>
         </ul>
       <button class="back">Back</button>
@@ -167,10 +140,11 @@
 
         <li class="option">
           <label for="musicVolumeInput">Audio</label>
-          <input type="number" value="0" min="0" id="musicVolumeInput" />
+          <input type="number" value="20" min="0" id="musicVolumeInput" />
         </li>
       </ul>
 
+      <button class="apply">Apply</button>
       <button class="back">Back</button>
     </div>
 
