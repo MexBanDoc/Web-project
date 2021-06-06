@@ -52,6 +52,7 @@ export class AudioManager {
     this.loadFiles();
     this.audios["button"].playbackRate = 4;
     this.audios["range"].playbackRate = 3;
+    this.audios["background"].loop = true;
   }
 
   loadFiles() {
