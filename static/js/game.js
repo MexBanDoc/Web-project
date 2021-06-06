@@ -25,6 +25,7 @@ export class Game {
       "board.png",
       "diam.png",
       "brick.png",
+      "shieldy.png",
       "bonus-confuse.png",
       "bonus-shrink.png",
       "bonus-explode.png",
@@ -184,7 +185,7 @@ export class Game {
   update(dt) {
     let brickCount = 0;
     for (let obj of this.gameObjects) {
-      if (obj instanceof Brick && obj.meta != "shield") {
+      if (obj instanceof Brick && obj.meta != "shield" && !obj.indestructible) {
         brickCount++;
       }
 

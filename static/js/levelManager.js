@@ -127,7 +127,7 @@ export class LevelManager {
       let start = (game.settingManager.gameWidth - totalLen) / 2;
       for (let bi = 0; bi < line.length; bi++) {
         if (line[bi] != 0) {
-          let brick = new Brick(game, { x: start + bi * bwidth, y: y });
+          let brick = new Brick(game, { x: start + bi * bwidth, y: y }, line[bi] != 1);
           bricks.push(brick);
         }
       }
