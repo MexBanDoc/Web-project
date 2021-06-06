@@ -27,7 +27,7 @@ export class Brick {
     this.game.removeObject(this);
     this.game.changeScore(1);
     let chance = Math.random() < this.game.settingManager.bonusChance;
-    if (chance) {
+    if (chance && this.meta!="shield") {
       this.game.audioManager.audios['bonusFall'].play();
       generateBonus(this.game, this.position);
     }
