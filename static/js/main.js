@@ -278,10 +278,17 @@ throwBtn.addEventListener(tdown, function (event) {
 
 let gameArea = document.querySelector("#gameScene > .gameArea");
 window.addEventListener("resize", updateGameSize, true);
+window.addEventListener('resize', checkMobile, true);
 
 function updateGameSize(event) {
   let width = game.updateSizes();
   gameArea.style.width = width + "px";
   canvas.style.width = "100%";
   canvas.style.height = (600 / 800) * width + "px";
+}
+
+function checkMobile(event){
+  if(~['Android', 'iPhone', 'iPod', 'iPad', 'BlackBerry'].indexOf(navigator.platform)) {
+      toggleControls();
+  }
 }
