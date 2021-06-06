@@ -143,7 +143,7 @@ export class Game {
     this.ball.position.x = this.board.position.x;
     this.ball.position.y = this.board.position.y;
     this.ball.position.y -= this.ball.size;
-    this.ball.position.x += this.board.width / 2;
+    this.ball.position.x += this.board.width / 2 - this.ball.size / 2 ;
     this.ball.image = this.images["ball"];
     this.ball.bounceable = true;
   }
