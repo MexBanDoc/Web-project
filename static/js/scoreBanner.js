@@ -96,6 +96,12 @@ export class ScoreBanner {
       this.position.y + this.height - this.height / 5
     );
 
+    context.fillText(
+      this.game.currentLevel,
+      this.position.x + this.height * 7,
+      this.position.y + this.height - this.height / 5
+    );
+
     // context.font = "42px serif";
     let font = Math.floor(this.height * 0.875) + "px serif";
     context.font = font;
