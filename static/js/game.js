@@ -84,7 +84,6 @@ export class Game {
   }
 
   start() {
-    this.resetState();
     this.lives = 5;
     this.score = 0;
     this.state = "Idle";
@@ -114,6 +113,7 @@ export class Game {
     this.keyboardHandler = new KeyboardHandler(this.board);
 
     this.scoreBanner.startTimer();
+    this.resetState();
   }
 
   looseBall() {
@@ -123,6 +123,7 @@ export class Game {
       this.state = "Fail";
       return;
     }
+    this.resetState();
   }
 
   resetState(){
