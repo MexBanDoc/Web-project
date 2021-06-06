@@ -84,6 +84,7 @@ export class Game {
   }
 
   start() {
+    this.resetBonuses();
     this.lives = 5;
     this.score = 0;
     this.state = "Idle";
@@ -97,6 +98,8 @@ export class Game {
       },
       this.settingManager.ballSize / 2
     );
+
+
 
     this.board = new Board(this);
     this.board.baseSpeed = this.settingManager.boardSpeed;
@@ -113,7 +116,7 @@ export class Game {
     this.keyboardHandler = new KeyboardHandler(this.board);
 
     this.scoreBanner.startTimer();
-    this.resetState();
+
   }
 
   looseBall() {
@@ -123,13 +126,13 @@ export class Game {
       this.state = "Fail";
       return;
     }
-    this.resetState();
+    this.resetBonuses();
+    this.resetBall();
   }
 
-  resetState(){
+  resetBonuses(){
     this.bonuses.forEach((b) => b.deactivate(this));
     this.bonuses = new Set();
-    this.resetBall();
   }
 
   resetBall() {
