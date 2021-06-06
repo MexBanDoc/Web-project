@@ -84,7 +84,7 @@ export class Game {
   }
 
   start() {
-    this.bonuses.clear();
+    this.resetState();
     this.lives = 5;
     this.score = 0;
     this.state = "Idle";
@@ -123,6 +123,9 @@ export class Game {
       this.state = "Fail";
       return;
     }
+  }
+
+  resetState(){
     this.bonuses.forEach((b) => b.deactivate(this));
     this.bonuses = new Set();
     this.resetBall();

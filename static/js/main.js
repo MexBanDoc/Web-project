@@ -74,6 +74,9 @@ startBtn.addEventListener("click", switchToLevelSelect);
 let optionsBtn = document.querySelector(".OptionsBtn");
 optionsBtn.addEventListener("click", switchToOptionSelect);
 
+let referenceBtn = document.querySelector(".ReferenceBtn");
+referenceBtn.addEventListener("click", switchToReference);
+
 let levelBtns = document.querySelectorAll("#levelMenu .level");
 for (let levelBtn of levelBtns) {
   levelBtn.addEventListener("click", selectLevelAndStart);
@@ -88,6 +91,10 @@ backFromOptionsBtn.addEventListener("click", returnFromOptions);
 
 let backFromLevelsBtn = document.querySelector("#levelMenu > .back");
 backFromLevelsBtn.addEventListener("click", returnFromLevels);
+
+let backFromReferenceBtn = document.querySelector("#referenceMenu > .back");
+backFromReferenceBtn.addEventListener("click", returnFromReference);
+
 
 let selectLevelFromWinBtn = document.querySelector("#win > .level");
 selectLevelFromWinBtn.addEventListener("click", chooseLevelFromWin);
@@ -115,6 +122,7 @@ restartGameBtn.addEventListener("click", restartLevel);
 let mainMenu = document.getElementById("mainMenu");
 let levelMenu = document.getElementById("levelMenu");
 let optionsMenu = document.getElementById("optionsMenu");
+let referenceMenu = document.getElementById("referenceMenu");
 let gameScene = document.getElementById("gameScene");
 
 let win = document.getElementById("win");
@@ -124,6 +132,11 @@ let fail = document.getElementById("fail");
 function switchToLevelSelect(value) {
   mainMenu.classList.add("hide");
   levelMenu.classList.remove("hide");
+}
+
+function switchToReference(value) {
+  mainMenu.classList.add("hide");
+  referenceMenu.classList.remove("hide");
 }
 
 function switchToOptionSelect(value) {
@@ -142,6 +155,11 @@ function selectLevelAndStart(value) {
 
 function returnFromOptions(value) {
   optionsMenu.classList.add("hide");
+  mainMenu.classList.remove("hide");
+}
+
+function returnFromReference(value) {
+  referenceMenu.classList.add("hide");
   mainMenu.classList.remove("hide");
 }
 
@@ -275,6 +293,28 @@ throwBtn.addEventListener(tdown, function (event) {
     game.continue();
   }
 });
+
+
+let bonusList = document.getElementById("bonusList");
+let contolList = document.getElementById("contolList");
+
+
+let bonusListBtn = document.querySelector(".bonusListBtn");
+bonusListBtn.addEventListener('click', showBonusList)
+let contolListBtn = document.querySelector(".contolListBtn");
+contolListBtn.addEventListener('click', showControlList)
+
+
+function showBonusList(event) {
+  contolList.classList.add("hide");
+  bonusList.classList.remove("hide");
+}
+
+function showControlList(event) {
+  bonusList.classList.add("hide");
+  contolList.classList.remove("hide");
+}
+
 
 let gameArea = document.querySelector("#gameScene > .gameArea");
 window.addEventListener("resize", updateGameSize, true);

@@ -129,7 +129,7 @@ body .hide {
   color: #fefefe;
 }
 
-#optionsMenu > .options {
+/* #optionsMenu > .options {
   list-style-type: none;
   padding: 0;
   border-radius: 3px;
@@ -141,14 +141,44 @@ body .hide {
   display: flex;
   justify-content: flex-end;
   padding: 0.5em;
+} */
+
+.options {
+  list-style-type: none;
+  padding: 0;
+  border-radius: 3px;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.options .option {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5em;
 }
 
 .option > label {
   flex: 2;
 }
 
+.option > img {
+  flex: 1;
+}
+
 .option > input {
   flex: 1;
+}
+
+.option > p {
+  flex: 5;
+}
+
+#referenceMenu .back {
+  margin-bottom: 20px;
+}
+
+#referenceMenu .options {
+  width: 100%;
 }
 
 input[type="number"] {
@@ -156,6 +186,12 @@ input[type="number"] {
   border-radius: 4px;
   box-sizing: border-box;
   resize: vertical;
+}
+
+#referenceMenu img {
+  width: 10%;
+  height: 10%;
+  float: left;
 }
 
 @media screen and (max-width: 800px) {
@@ -181,6 +217,10 @@ input[type="number"] {
 
 ::-webkit-scrollbar {
   width: 0;
+}
+
+#referenceMenu ::-webkit-scrollbar {
+  width: 20px;
 }
 
 .gameArea {
