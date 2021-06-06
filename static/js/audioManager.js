@@ -12,6 +12,7 @@ export class AudioManager {
       "win.wav",
       "range.wav",
       "background.mp3",
+      "winBtn.mp3",
     ];
 
     this.audios = {};

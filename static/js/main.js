@@ -253,6 +253,9 @@ function nextLevelFromWin(value) {
     win.classList.add("hide");
     gameScene.classList.remove("hide");
   }
+  else {
+    audioManager.tryPlay('winBtn');
+  }
 }
 
 function getNextLevelName(levelNane) {
