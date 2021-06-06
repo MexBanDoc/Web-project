@@ -270,3 +270,7 @@ input[type=checkbox]
   transform: scale(4);
   padding: 10px;
 }
+
+input:focus{
+  outline: none;
+}
