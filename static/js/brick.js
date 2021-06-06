@@ -1,9 +1,10 @@
 import { generateBonus } from "./bonus.js";
 
 export class Brick {
-  constructor(game, position = { x: 0, y: 0 }) {
+  constructor(game, position = { x: 0, y: 0 }, indestructible = false) {
     this.game = game;
-    this.image = game.images["brick"];
+    this.indestructible = indestructible;
+    this.image = indestructible ? game.images["shieldy"] : game.images["brick"];
     this.width = game.settingManager.brickWidth;
     this.height = game.settingManager.brickHeight;
 
@@ -24,6 +25,7 @@ export class Brick {
 
   hit() {
     this.game.audioManager.audios['brickDestroyed'].play();
+    if (this.indestructible) return;
     this.game.removeObject(this);
     this.game.changeScore(1);
     let chance = Math.random() < this.game.settingManager.bonusChance;
