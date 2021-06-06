@@ -14,15 +14,23 @@ export class KeyboardHandler {
 
   keyDownHandler(event) {
     switch (event.key) {
+      case "ArrowUp":
+      case "ц":
       case "w":
         this.board.moveUp();
         break;
+      case "ArrowDown":
+      case "ы":
       case "s":
         this.board.moveDown();
         break;
+      case "ArrowLeft":
+      case "ф":
       case "a":
         this.board.moveLeft();
         break;
+      case "ArrowRight":
+      case "в":
       case "d":
         this.board.moveRight();
         break;
@@ -37,15 +45,23 @@ export class KeyboardHandler {
 
   keyUpHandler(event) {
     switch (event.key) {
+      case "ArrowUp":
+      case "ц":
       case "w":
         this.board.stopMovingUp();
         break;
+      case "ArrowDown":
+      case "ы":
       case "s":
         this.board.stopMovingDown();
         break;
+      case "ArrowLeft":
+      case "ф":
       case "a":
         this.board.stopMovingLeft();
         break;
+      case "ArrowRight":
+      case "в":
       case "d":
         this.board.stopMovingRight();
         break;

@@ -11,9 +11,36 @@ export class AudioManager {
       "fail.wav",
       "win.wav",
       "range.wav",
+      "background.mp3",
     ];
 
     this.audios = {};
+    this.muted = false;
+  }
+
+  tryPlay(sound) {
+    if (!this.muted) {
+      this.audios[sound].currentTime = 0;
+      this.audios[sound].play();
+    }
+  }
+
+  stopEverySound() {
+    for (let audio of this.audios) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  }
+
+  setVolume(volume) {
+    for (const [name, audio] of Object.entries(this.audios)) {
+      audio.volume = volume;
+      audio.currentTime = 0;
+    }
+  }  
+
+  mute() {
+    this.muted = true;
   }
 
   setUpSounds() {
@@ -24,11 +51,9 @@ export class AudioManager {
 
   loadFiles() {
     for (let fname of this.audiofilenames) {
-      // let audio = document.createElement("audio");
       let path = this.audioSrcPath + fname;
       let audio = new Audio(path);
       
-      // audio.src = path;
       this.audios[fname.split(".")[0]] = audio;
     }
   }
