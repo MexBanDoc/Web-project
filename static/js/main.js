@@ -186,11 +186,12 @@ function showWin(value) {
   score.textContent = "Score: " + game.score;
   time.textContent = "Time: " + game.scoreBanner.timeStr;
 
-  let nextLevelBtn = document.querySelector('.nextlevel');
-  nextLevelBtn.classList.remove('hide');
+  let nextLevelBtn = document.querySelector('#win .nextlevel');
+  // nextLevelBtn.classList.add('hide');
+  nextLevelBtn.textContent = "Total Complete!";
   let nextLevelName = getNextLevelName(game.currentLevel);
-  if (!nextLevelName) {
-    nextLevelBtn.classList.add('hide');
+  if (nextLevelName) {
+    nextLevelBtn.textContent = "Next Level";
   }
   win.classList.remove("hide");
 }
@@ -245,9 +246,6 @@ function chooseLevelFromWin(value) {
 }
 
 function nextLevelFromWin(value) {
-  
-  
-
   let nextLevelName = getNextLevelName(game.currentLevel);
   if (nextLevelName) {
     game.setLevelByName(nextLevelName);
