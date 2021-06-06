@@ -180,9 +180,11 @@ function returnFromLevels(value) {
 function showWin(value) {
   audioManager.tryPlay('win');
   gameScene.classList.add("hide");
-
+  let level = game.currentLevel;
   let score = document.querySelector("#win > .score");
   let time = document.querySelector("#win > .time");
+  let header = document.querySelector("#win > h2");
+  header.textContent = `${level} complete`;
 
   score.textContent = "Score: " + game.score;
   time.textContent = "Time: " + game.scoreBanner.timeStr;
