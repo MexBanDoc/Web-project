@@ -245,13 +245,14 @@ function chooseLevelFromWin(value) {
 }
 
 function nextLevelFromWin(value) {
-  win.classList.add("hide");
+  
   
 
   let nextLevelName = getNextLevelName(game.currentLevel);
   if (nextLevelName) {
     game.setLevelByName(nextLevelName);
     startGame();
+    win.classList.add("hide");
     gameScene.classList.remove("hide");
   }
 }
