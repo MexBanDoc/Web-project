@@ -60,6 +60,7 @@ function startGame() {
   // canvas.style.width = width + "px";
   // canvas.style.height = (600 / 800) * width + "px";
   updateGameSize();
+  checkMobile();
   game.start();
   loopStop = false;
   requestAnimationFrame(gameLoop);
@@ -383,7 +384,7 @@ function showControlList(event) {
 
 let gameArea = document.querySelector("#gameScene > .gameArea");
 window.addEventListener("resize", updateGameSize, true);
-window.addEventListener('resize', checkMobile, true);
+//window.addEventListener('resize', checkMobile, true);
 
 function updateGameSize(event) {
   let width = game.updateSizes();
@@ -393,9 +394,16 @@ function updateGameSize(event) {
 }
 
 function checkMobile(event){
-  if(~['Android', 'iPhone', 'iPod', 'iPad', 'BlackBerry'].indexOf(navigator.platform)) {
+  /*if(~['Android', 'iPhone', 'iPod', 'iPad', 'BlackBerry'].indexOf(navigator.platform)) {
       toggleControls();
+  }*/
+    if (screen.orientation !== 'indefined' && screen.orientation.type == 'portrait-primary'){
+    controlMode=false;
   }
+  else{
+    controlMode=true;
+  }
+  toggleControls();
 }
 
 
