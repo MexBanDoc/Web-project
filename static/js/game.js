@@ -122,6 +122,7 @@ export class Game {
   }
 
   looseBall() {
+    this.audioManager.audios['ballLoss'].play();
     this.state = "Idle";
     this.lives--;
     if (this.lives < 0) {

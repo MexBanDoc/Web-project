@@ -55,9 +55,9 @@ let bonusMap = {
             let shield = new Brick(game, { x: 0, y: game.height - 10 });
             shield.height = 10;
             shield.width = game.width;
-            shield.meta = "shield"
+            shield.meta = "shield";
             game.addObject(shield);
-            return false
+            return false;
         },
         deactivate(game){
 
@@ -66,6 +66,7 @@ let bonusMap = {
     range: {
         left: 3,
         activate(game){
+            game.audioManager.audios['range'].play()
             console.log("range: " + this.left);
             let radius = 25;
             let bullet1 = new Bullet(
