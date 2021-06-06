@@ -67,7 +67,7 @@ body .hide {
   border: none;
   background: #fefefe;
   color: #9e6bc7;
-  padding: 15px 32px;
+  padding: 2vh 2vw;
   margin: 5px auto;
   text-align: center;
   text-decoration: none;
@@ -205,7 +205,7 @@ input[type="number"] {
 
 @media screen and (max-width: 800px) {
   .frame button {
-    font-size: 1.2em;
+    font-size: 4vmin;
     width: 90%;
   }
 
@@ -214,13 +214,12 @@ input[type="number"] {
   }
 
   .game .navigation > button {
-    min-width: 70px;
     width: 25%;
     max-width: 200px;
     padding: 4px 4px;
     margin: 0;
 
-    font-size: 1.7rem;
+    font-size: 4vmin;
   }
 
   #bonusList .option {
