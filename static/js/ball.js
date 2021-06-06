@@ -78,7 +78,7 @@ export class Ball {
             obj.hit();
             this.lastHit = obj;
             if (!(obj instanceof Board)) {
-              if (this.bounceable) {
+              if (this.bounceable || obj.indestructible) {
                 this.speed.y = -this.speed.y;
               }
             } else {
