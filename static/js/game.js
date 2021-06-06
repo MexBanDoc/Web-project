@@ -5,9 +5,10 @@ import { Brick } from "./brick.js";
 import { ScoreBanner } from "./scoreBanner.js";
 
 export class Game {
-  constructor(settingManager, levelManager) {
+  constructor(settingManager, levelManager, audioManager) {
     this.settingManager = settingManager;
     this.levelManager = levelManager;
+    this.audioManager = audioManager;
 
     // this.padding = 50;
     this.padding = this.settingManager.scoreBoardHeight; //50; // FIXME: hardcode
@@ -84,6 +85,7 @@ export class Game {
   }
 
   start() {
+    // this.audioManager.audios['s1'].play();
     this.resetBonuses();
     this.lives = 5;
     this.score = 0;
@@ -120,6 +122,7 @@ export class Game {
   }
 
   looseBall() {
+    this.audioManager.audios['ballLoss'].play();
     this.state = "Idle";
     this.lives--;
     if (this.lives < 0) {
