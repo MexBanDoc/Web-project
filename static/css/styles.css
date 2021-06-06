@@ -5,6 +5,7 @@
 }
 
 body {
+  touch-action: manipulation;
   font-size: 0;
   overflow: hidden;
   background: rgb(63, 94, 251);
