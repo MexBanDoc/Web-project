@@ -58,6 +58,7 @@ body .hide {
 
 .list {
   overflow-y: auto;
+  overflow-x: hidden;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -129,20 +130,6 @@ body .hide {
   background: #cf03f8;
   color: #fefefe;
 }
-
-/* #optionsMenu > .options {
-  list-style-type: none;
-  padding: 0;
-  border-radius: 3px;
-  width: 500px;
-  margin: 0 auto;
-}
-
-#optionsMenu > .options .option {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0.5em;
-} */
 
 .options {
   list-style-type: none;
