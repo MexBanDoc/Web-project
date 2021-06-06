@@ -17,7 +17,7 @@ app.get("/", (_, res) => {
     res.sendFile(path.join(rootDir, "/static/index.html"));
 });
 
-app.get("/*", (_, res) => {
+app.get("/static/*", (_, res) => {
     res.redirect("/");
     // res.sendFile(path.join(rootDir, "/static/index.html"));
 });
