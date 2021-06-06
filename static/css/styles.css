@@ -194,7 +194,9 @@ input[type="number"] {
 
 #bonusList div {
   margin: 0;
+  padding: 0;
   display: inline-block;
+
 }
 
 #bonusList .option {
