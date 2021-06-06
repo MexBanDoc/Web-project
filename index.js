@@ -1,9 +1,12 @@
-const express = require('express');
-const path = require('path');
+// const express = require('express');
+// const path = require('path');
+import express from "express";
+import path from "path";
 
 const rootDir = process.cwd();
 const port = 80;
-const addr = "194.87.214.109";
+// const addr = "194.87.214.109";
+const addr = "127.0.0.1";
 const app = express();
 
 app.use("/static", express.static("static"));
