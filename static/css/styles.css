@@ -27,7 +27,8 @@ h3 {
 }
 
 h2 {
-  margin-top: 0;
+  margin-top: 5px;
+  margin-bottom: 7px;
 }
 
 body .hide {
@@ -159,6 +160,8 @@ body .hide {
 
 .option > p {
   flex: 5;
+  font-size: 3vmin;
+  margin: 5px 0px;
 }
 
 #referenceMenu .back {
@@ -196,7 +199,6 @@ input[type="number"] {
   margin: 0;
   padding: 0;
   display: inline-block;
-
 }
 
 #bonusList .option {
@@ -204,6 +206,9 @@ input[type="number"] {
   width: 45%;
 }
 
+#levelMenu .back {
+  margin-bottom: 30px;
+}
 
 @media screen and (max-width: 800px) {
   .frame button {
