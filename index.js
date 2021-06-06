@@ -13,8 +13,13 @@ app.use("/static", express.static("static"));
 
 app.use("/favicon.ico", express.static("static/favicon.ico"));
 
+app.get("/", (_, res) => {
+    res.sendFile(path.join(rootDir, "/static/index.html"));
+});
+
 app.get("/*", (_, res) => {
-  res.sendFile(path.join(rootDir, "/static/index.html"));
+    res.redirect("/");
+    // res.sendFile(path.join(rootDir, "/static/index.html"));
 });
 
 app.listen(port, addr, () => console.log(`App listening on ${addr}:${port}`));
