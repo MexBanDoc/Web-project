@@ -194,6 +194,27 @@ input[type="number"] {
   float: left;
 }
 
+#referenceMenu .options {
+  flex-direction:row;
+  flex-wrap: wrap;
+}
+
+#bonusList {
+  font-size: 0;
+  width: 100%;
+}
+
+#bonusList div {
+  margin: 0;
+  display: inline-block;
+}
+
+#bonusList .option {
+  font-size: 1.2rem;
+  width: 45%;
+}
+
+
 @media screen and (max-width: 800px) {
   .frame button {
     font-size: 1.2em;
@@ -213,15 +234,16 @@ input[type="number"] {
 
     font-size: 1.7rem;
   }
+
+  #bonusList .option {
+    width: 100%;
+  }
 }
 
 ::-webkit-scrollbar {
   width: 0;
 }
 
-#referenceMenu ::-webkit-scrollbar {
-  width: 20px;
-}
 
 .gameArea {
   display: flex;

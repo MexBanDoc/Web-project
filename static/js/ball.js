@@ -38,23 +38,26 @@ export class Ball {
   }
 
   handleCollisions() {
-    if (this.position.x + this.size > this.game.width || this.position.x < 0) {
+    if (this.position.x + this.size > this.game.width && this.lastHit!="right"){
       this.speed.x = -this.speed.x;
-      this.lastHit = null;
-      return;
+      this.lastHit = "right"
     }
 
-    if (this.position.y + this.size > this.game.height) {
-      this.game.state = "Fail";
+    if (this.position.x < 0 && this.lastHit != "left"){
+      this.speed.x = -this.speed.x;
+      this.lastHit = "left";
     }
 
-    if (this.position.y < 0) {
+    //top
+    if (this.position.y < 0 && this.lastHit != "top") {
       this.speed.y = -this.speed.y;
-      this.lastHit = null;
-      return;
+      this.lastHit = "top";
     }
 
+    //bottom
     if (this.position.y + this.size > this.game.height) {
+      this.lastHit = null;
+      this.game.state = "Fail";
       this.game.looseBall();
     }
 
@@ -65,8 +68,8 @@ export class Ball {
 
       if (obj instanceof Brick || obj instanceof Board) {
         if (
-          obj.position.x <= this.position.x + this.radius &&
-          this.position.x + this.radius <= obj.position.x + obj.width
+          obj.position.x <= this.position.x + this.size &&
+          this.position.x <= obj.position.x + obj.width
         ) {
           if (
             obj.position.y + obj.height >= this.position.y &&
