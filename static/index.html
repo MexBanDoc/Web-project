@@ -118,12 +118,16 @@
           </p>
         </li>
         <li class="option">
-          <p>Ingame press "Controls" to use on-screen controls</p>
+          <p>Press "Controls" while ingame to use on-screen controls</p>
         </li>
         <li class="option">
           <p>
-            Game is lost after If you lose the ball when you have 0 hearts you
-            will lose
+          	Losing a ball will cost you one health
+          </p>
+        </li>
+        <li class="option">
+          <p>
+          	Losing a ball while having no health will cost you a game!
           </p>
         </li>
       </ul>
@@ -135,25 +139,18 @@
 
       <ul class="options list">
         <li class="option">
-          <label for="ballSpeedInput">Ball Size</label>
-          <input type="number" value="50" min="0.1" id="ballSizeInput" />
-        </li>
-        <li class="option">
-          <label for="ballSpeedInput">Ball Speed</label>
-          <input type="number" value="5" min="0.1" id="ballSpeedInput" />
+          <label for="easyDifficultyChoice">Easy</label>
+          <input type="radio" id="easyDifficultyChoice" name="difficulty" />
         </li>
 
         <li class="option">
-          <label for="boardSizeInput">Board Size</label>
-          <input type="number" value="200" min="0.1" id="boardSizeInput" />
+          <label for="normalDifficultyChoice">Normal</label>
+          <input type="radio" id="normalDifficultyChoice" name="difficulty" />
         </li>
+
         <li class="option">
-          <label for="boardSizeInput">Board Speed</label>
-          <input type="number" value="5" min="0.1" id="boardSpeedInput" />
-        </li>
-        <li class="option">
-          <label for="bonusChanceInput">Bonus Chance</label>
-          <input type="number" value="0.4" min="0" id="bonusChanceInput" />
+          <label for="hardDifficultyChoice">Hard</label>
+          <input type="radio" id="hardDifficultyChoice" name="difficulty" />
         </li>
 
         <li class="option">

@@ -31,6 +31,29 @@ export class SettingManager {
     this.recalcSizes();
 
     this.soundVolume = 0;
+
+    this.currentDifficulty = "Normal";
+
+    this.difficultySettings = {
+      Easy: {
+        ballSize: 25,
+        ballSpeed: 5,
+        boardWidth: 150,
+        boardSpeed: 7,
+      },
+      Normal: {
+        ballSize: 25,
+        ballSpeed: 7,
+        boardWidth: 125,
+        boardSpeed: 10,
+      },
+      Hard: {
+        ballSize: 25,
+        ballSpeed: 10,
+        boardWidth: 100,
+        boardSpeed: 15,
+      }
+    }
   }
 
   setBaseSize(gameWidth, gameHeight) {
@@ -56,22 +79,22 @@ export class SettingManager {
   }
 
   update() {
-    let ballSize = parseInt(document.getElementById("ballSizeInput").value);
-    this.ballSize = (this.gameWidth / 800) * ballSize;
-    let ballSpeed = parseInt(document.getElementById("ballSpeedInput").value);
-    this.ballSpeed = (this.gameWidth / 800) * ballSpeed;
 
-    let boardWidth = parseInt(document.getElementById("boardSizeInput").value);
-    this.boardWidth = (this.gameWidth / 800) * boardWidth;
-    let boardSpeed = parseInt(document.getElementById("boardSpeedInput").value);
-    this.boardSpeed = (this.gameWidth / 800) * boardSpeed;
+    this.currentDifficulty = document.getElementById("easyDifficultyChoice").checked ? "Easy"
+        : document.getElementById("normalDifficultyChoice").checked ? "Normal" : "Hard";
+
+    console.log(this.currentDifficulty);
+
+    this.ballSize = (this.gameWidth / 800) * this.difficultySettings[this.currentDifficulty].ballSize;
+    this.ballSpeed = (this.gameWidth / 800) * this.difficultySettings[this.currentDifficulty].ballSpeed;
+
+    this.boardWidth = (this.gameWidth / 800) * this.difficultySettings[this.currentDifficulty].boardWidth;
+    this.boardSpeed = (this.gameWidth / 800) * this.difficultySettings[this.currentDifficulty].boardSpeed;
 
     this.soundVolume = parseInt(document.getElementById("musicVolumeInput").value) / 100;
     this.backgroundAudio = document.getElementById("backgroundMusicInput").checked;
-    //TODO: вынести настройки куда-нибудь из инпутов
-    this.bonusChance = parseFloat(
-      document.getElementById("bonusChanceInput").value
-    );
+
+    this.bonusChance = 0.1;
   }
 }
 
