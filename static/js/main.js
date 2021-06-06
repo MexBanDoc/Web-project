@@ -358,3 +358,10 @@ function playAudioBtn(event) {
 function playAudioBackBtn(event) {
   audioManager.audios['backButton'].play();
 }
+
+let applyBtn = document.querySelector('.apply');
+applyBtn.addEventListener('click', applyOptions);
+
+function applyOptions(event) {
+  game.settingManager.update();
+}

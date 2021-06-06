@@ -90,7 +90,7 @@ export class Game {
     this.lives = 5;
     this.score = 0;
     this.state = "Idle";
-    this.settingManager.update();
+    // this.settingManager.update();
     this.ball = new Ball(
       this,
       { x: this.width / 2, y: (this.height / 4) * 3 },
