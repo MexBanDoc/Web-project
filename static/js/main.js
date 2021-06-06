@@ -341,7 +341,20 @@ function checkMobile(event){
 
 let buttons = document.body.getElementsByTagName("button");
 for (let btn of buttons) {
-  btn.addEventListener('click', function(event) {
-    audioManager.audios['button'].play();
-  });
+  btn.addEventListener('click', playAudioBtn);
+}
+
+let backButtons = document.body.querySelectorAll(".back");
+for (let btn of backButtons) {
+  btn.removeEventListener('click', playAudioBtn);
+  btn.addEventListener('click', playAudioBackBtn);
+}
+
+
+function playAudioBtn(event) {
+  audioManager.audios['button'].play();
+}
+
+function playAudioBackBtn(event) {
+  audioManager.audios['backButton'].play();
 }

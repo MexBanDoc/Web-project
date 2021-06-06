@@ -6,6 +6,7 @@ export class AudioManager {
       "bonusFall.wav",
       "brickDestroyed.wav",
       "button.wav",
+      "backButton.wav",
       "diamСaught.wav",
       "fail.wav",
       "win.wav",
@@ -17,7 +18,7 @@ export class AudioManager {
 
   setUpSounds() {
     this.loadFiles()
-    this.audios['button'].playbackRate = 3;
+    this.audios['button'].playbackRate = 4;
     this.audios['range'].playbackRate = 3;
   }
 
