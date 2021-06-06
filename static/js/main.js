@@ -103,6 +103,9 @@ backFromReferenceBtn.addEventListener("click", returnFromReference);
 let selectLevelFromWinBtn = document.querySelector("#win > .level");
 selectLevelFromWinBtn.addEventListener("click", chooseLevelFromWin);
 
+let selectNextLevelFromWinBtn = document.querySelector("#win > .nextlevel");
+selectNextLevelFromWinBtn.addEventListener("click", nextLevelFromWin);
+
 let backFromWinBtn = document.querySelector("#win > .back");
 backFromWinBtn.addEventListener("click", returnFromWin);
 
@@ -183,6 +186,12 @@ function showWin(value) {
   score.textContent = "Score: " + game.score;
   time.textContent = "Time: " + game.scoreBanner.timeStr;
 
+  let nextLevelBtn = document.querySelector('.nextlevel');
+  nextLevelBtn.classList.remove('hide');
+  let nextLevelName = getNextLevelName(game.currentLevel);
+  if (!nextLevelName) {
+    nextLevelBtn.classList.add('hide');
+  }
   win.classList.remove("hide");
 }
 
@@ -233,6 +242,27 @@ function startCurrentLevelFromFail(value) {
 function chooseLevelFromWin(value) {
   win.classList.add("hide");
   levelMenu.classList.remove("hide");
+}
+
+function nextLevelFromWin(value) {
+  win.classList.add("hide");
+  gameScene.classList.remove("hide");
+
+  let nextLevelName = getNextLevelName(game.currentLevel);
+  if (nextLevelName) {
+    game.setLevelByName(nextLevelName);
+    startGame();
+  }
+}
+
+function getNextLevelName(levelNane) {
+  let levelNames = game.levelManager.getLevelNames();
+  let pos = levelNames.indexOf(levelNane);
+  let nextPos = pos + 1;
+  if (nextPos < levelNames.length) {
+    return levelNames[nextPos];
+  }
+  return undefined;
 }
 
 let controlMode = false;
