@@ -79,7 +79,22 @@ export class Ball {
             this.lastHit = obj;
             if (!(obj instanceof Board)) {
               if (this.bounceable || obj.indestructible) {
-                this.speed.y = -this.speed.y;
+                let ball_r = this.position.x + this.size;
+                let ball_l = this.position;
+                let obj_l = obj.position.x;
+                let obj_r = obj.position+obj.width;
+                let ball_t = this.position.y;
+                let ball_b = this.position.y + this.size;
+                let obj_t = obj.position.y;
+                let obj_b = obj.position.y + obj.height;
+                let x_inter = Math.min(ball_r, obj_r) - Math.max(ball_l, obj_l)
+                let y_inter = Math.min(ball_b, obj_b) - Math.max(ball_t, obj_t)
+                if (x_inter < y_inter){
+                  this.speed.x = - this.speed.x;
+                }
+                else{
+                  this.speed.y = -this.speed.y;
+                }
               }
             } else {
               let a = Math.atan2(this.speed.y, this.speed.x);
