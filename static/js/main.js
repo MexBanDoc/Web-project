@@ -250,6 +250,8 @@ function toggleControls(value) {
 
 let leftBtn = document.querySelector(".controller .left");
 let rightBtn = document.querySelector(".controller .right");
+let upBtn = document.querySelector(".controller .up");
+let downBtn = document.querySelector(".controller .down");
 let actionBtn = document.querySelector(".controller .action");
 let throwBtn = document.querySelector(".controller .throw");
 
@@ -260,20 +262,33 @@ let tdown = "touchstart";
 let tup = "touchend";
 
 // NOTE: mouse controls
+//left
 leftBtn.addEventListener(mdown, (event) => game.board.moveLeft());
 
 leftBtn.addEventListener(mup, (event) => game.board.stopMovingLeft());
 leftBtn.addEventListener(mleave, (event) => game.board.stopMovingLeft());
+//up
+upBtn.addEventListener(mdown, (event) => game.board.moveUp());
 
+upBtn.addEventListener(mup, (event) => game.board.stopMovingUp());
+upBtn.addEventListener(mleave, (event) => game.board.stopMovingUp());
+//right
 rightBtn.addEventListener(mdown, (event) => game.board.moveRight());
 
 rightBtn.addEventListener(mup, (event) => game.board.stopMovingRight());
 rightBtn.addEventListener(mleave, (event) => game.board.stopMovingRight());
+//down
+downBtn.addEventListener(mdown, (event) => game.board.moveDown());
 
+downBtn.addEventListener(mup, (event) => game.board.stopMovingDown());
+downBtn.addEventListener(mleave, (event) => game.board.stopMovingDown());
+
+//action
 actionBtn.addEventListener(mdown, (event) => game.board.useBonus());
 
 actionBtn.addEventListener(mup, (event) => game.board.stopBonus());
 
+//throw
 throwBtn.addEventListener(mdown, function (event) {
   if (game.state === "Idle") {
     game.continue();
