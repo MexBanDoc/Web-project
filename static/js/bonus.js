@@ -55,6 +55,7 @@ let bonusMap = {
             let shield = new Brick(game, { x: 0, y: game.height - 10 });
             shield.height = 10;
             shield.width = game.width;
+            shield.meta = "shield"
             game.addObject(shield);
             return false
         },

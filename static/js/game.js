@@ -181,7 +181,7 @@ export class Game {
   update(dt) {
     let brickCount = 0;
     for (let obj of this.gameObjects) {
-      if (obj instanceof Brick) {
+      if (obj instanceof Brick && obj.meta != "shield") {
         brickCount++;
       }
 
