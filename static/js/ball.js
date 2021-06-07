@@ -97,6 +97,7 @@ export class Ball {
                 }
               }
             } else {
+              this.game.audioManager.tryPlay('boardTouch');
               let a = Math.atan2(this.speed.y, this.speed.x);
               let horizontalDelta =
                 (obj.position.x +
@@ -118,8 +119,6 @@ export class Ball {
         if (
           this.position.y + this.radius >= obj.position.y &&
           this.position.y + this.radius <= obj.position.y + obj.height
-          //   this.position.y + this.size >= obj.position.y &&
-          //   this.position.y + this.radius <= obj.position.y + obj.height
         ) {
           if (
             obj.position.x + obj.width >= this.position.x &&

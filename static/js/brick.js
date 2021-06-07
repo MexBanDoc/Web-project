@@ -24,13 +24,13 @@ export class Brick {
   update(dt) {}
 
   hit() {
-    this.game.audioManager.audios['brickDestroyed'].play();
+    this.game.audioManager.tryPlay('brickDestroyed');
     if (this.indestructible) return;
     this.game.removeObject(this);
     this.game.changeScore(1);
     let chance = Math.random() < this.game.settingManager.bonusChance;
     if (chance && this.meta!="shield") {
-      this.game.audioManager.audios['bonusFall'].play();
+      this.game.audioManager.tryPlay('bonusFall');
       generateBonus(this.game, this.position);
     }
   }

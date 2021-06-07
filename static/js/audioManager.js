@@ -13,6 +13,7 @@ export class AudioManager {
       "range.wav",
       "background.mp3",
       "winBtn.mp3",
+      "boardTouch.wav",
     ];
 
     this.audios = {};
@@ -53,6 +54,7 @@ export class AudioManager {
     this.loadFiles();
     this.audios["button"].playbackRate = 4;
     this.audios["range"].playbackRate = 3;
+    this.audios["boardTouch"].playbackRate = 3;
     this.audios["background"].loop = true;
   }
 
