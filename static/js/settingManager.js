@@ -51,7 +51,7 @@ export class SettingManager {
         ballSize: 25,
         ballSpeed: 10,
         boardWidth: 100,
-        boardSpeed: 15,
+        boardSpeed: 13,
       }
     }
   }
