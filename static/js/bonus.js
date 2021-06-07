@@ -67,7 +67,6 @@ let bonusMap = {
         left: 3,
         activate(game){
             game.audioManager.audios['range'].play()
-            console.log("range: " + this.left);
             let radius = 25;
             let bullet1 = new Bullet(
                 game,

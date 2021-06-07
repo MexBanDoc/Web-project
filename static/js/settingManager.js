@@ -83,7 +83,6 @@ export class SettingManager {
     this.currentDifficulty = document.getElementById("easyDifficultyChoice").checked ? "Easy"
         : document.getElementById("normalDifficultyChoice").checked ? "Normal" : "Hard";
 
-    console.log(this.currentDifficulty);
 
     this.ballSize = (this.gameWidth / 800) * this.difficultySettings[this.currentDifficulty].ballSize;
     this.ballSpeed = (this.gameWidth / 800) * this.difficultySettings[this.currentDifficulty].ballSpeed;
