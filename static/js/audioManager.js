@@ -14,6 +14,7 @@ export class AudioManager {
       "background.mp3",
       "winBtn.mp3",
       "boardTouch.wav",
+      "bonusCatch.wav",
     ];
 
     this.audios = {};

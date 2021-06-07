@@ -122,6 +122,7 @@ export class BonusBox {
     }
 
     activate(game) {
+        game.audioManager.tryPlay('bonusCatch');
         if (this.bonus.interactive){
             game.bonuses.add(this.bonus);
             return;
