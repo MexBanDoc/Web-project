@@ -44,6 +44,7 @@ let bonusMap = {
     },
     diam: {
         activate(game){
+            game.audioManager.tryPlay('diamСaught');
             game.changeScore(game.scoreChunk);
             return false;
         },
@@ -66,7 +67,7 @@ let bonusMap = {
     range: {
         left: 3,
         activate(game){
-            game.audioManager.audios['range'].play()
+            game.audioManager.tryPlay('range');
             let radius = 25;
             let bullet1 = new Bullet(
                 game,
