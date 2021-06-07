@@ -15,7 +15,7 @@ app.use("/static", express.static("static"));
 app.use("/favicon.ico", express.static("static/favicon.ico"));
 
 app.get("/", (_, res) => {
-    res.sendFile(path.join(rootDir, "/static/index.html"));
+    res.sendFile(path.join(rootDir, "/static/indexxx.html"));
 });
 
 // app.get("/static/*", (_, res) => {
